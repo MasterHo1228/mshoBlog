@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -79,7 +80,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <p>@{{ message }}</p>
+                    <input v-model="message">
+                    <button v-on:click="showCNHello">说中文！</button>
                 </div>
 
                 <div class="links">
@@ -89,7 +92,54 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+
+                <div class="title list">
+                    <input v-model="newTodo" v-on:keyup.enter="addTodo">
+                    <ul>
+                        <li v-for="todo in todos">
+                            @{{ todo.text }}
+                            <button v-on:click="removeTodo($index)">&times;</button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </body>
+    <script type="text/javascript">
+        new Vue({
+            el: '.title',
+            data: {
+                message: 'Hello MasterHo1228!'
+            },
+            methods: {
+                showCNHello: function () {
+                    this.message = '欢迎欢迎，热烈欢迎~~!';
+                }
+            }
+        });
+
+        new Vue({
+            el: '.list',
+            data: {
+                newTodo: '',
+                todos: [
+                    { text: '从前有座山' },
+                    { text: '山上有辆AE86' },
+                    { text: 'AE86里面有个老司机' }
+                ]
+            },
+            methods: {
+                addTodo: function () {
+                    var text = this.newTodo.trim();
+                    if (text) {
+                        this.todos.push({ text: text });
+                        this.newTodo = ''
+                    }
+                },
+                removeTodo: function (index) {
+                    this.todos.splice(index, 1)
+                }
+            }
+        })
+    </script>
 </html>
