@@ -49,7 +49,7 @@
                         </ul>
                     </li>
                 @else
-                    <li><a href="javascript:void(0)">登录</a></li>
+                    <li><a href="{{ route('signin') }}">登录</a></li>
                     <li><a href="{{ route('signup') }}">注册</a></li>
                 @endif
             </ul>
