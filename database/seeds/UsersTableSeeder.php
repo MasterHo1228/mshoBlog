@@ -16,6 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'MasterHo1228',
             'email' => 'masterho1228@gmail.com',
             'password' => '123456',
+            'gender' => 'male',
             'is_admin' => true,
             'activated' => true,
         ]);
