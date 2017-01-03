@@ -35,5 +35,6 @@ $factory->define(App\Models\Articles::class, function (Faker\Generator $faker) {
         'content' => $faker->text(),
         'created_at' => $date_time,
         'updated_at' => $date_time,
+        'isTopDisplay' => false,
     ];
 });
