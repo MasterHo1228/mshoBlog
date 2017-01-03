@@ -8,13 +8,10 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-// Bootstrap Material
-@import "node_modules/bootstrap-material-design/sass/bootstrap-material-design";
-
 /* Universal */
 
 body{
-  font-family: 'Roboto', sans-serif ;
+  font-family: 'Roboto', "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 /* footer */

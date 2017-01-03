@@ -1,14 +1,16 @@
-<div class="navbar navbar-inverse">
-    <div class="container-fluid">
+<nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
+    <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ route('home') }}">低调君的黑科技研究室</a>
         </div>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
+
+        <div class="collapse navbar-collapse" id="navigation">
             <ul class="nav navbar-nav">
                 <li><a href="{{ route('home') }}">主页</a></li>
                 <li><a href="javascript:void(0)">帖子</a></li>
@@ -55,4 +57,4 @@
             </ul>
         </div>
     </div>
-</div>
+</nav>

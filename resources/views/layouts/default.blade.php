@@ -5,17 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="MasterHo1228">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/material-kit.css">
     <title>@yield('title','木有标题') -- 低调君的黑科技研究室</title>
 </head>
-<body>
+<body class="@yield('pageType','')">
 @include('layouts._header')
-<div class="container">
-    <div class="col-md-offset-1 col-md-10">
-        @include('shared.message')
-        @yield('content')
-        @include('layouts._footer')
+<div class="wrapper">
+    <div class="header header-filter" style="background-image: url(@yield('bg_image','/images/city.jpg'));">
+        @if(Request::is('/'))
+            @include('static_pages._index_header')
+        @endif
     </div>
+    @include('shared.message')
+    <div class="main main-raised">
+        @yield('content')
+    </div>
+    @include('layouts._footer')
 </div>
 </body>
 <script src="/js/app.js"></script>
+<script src="/js/material-kit.js"></script>
 </html>

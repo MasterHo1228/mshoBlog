@@ -2,12 +2,16 @@
 @section('title','关于')
 
 @section('content')
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3>关于</h3>
-        </div>
-        <div class="panel-body">
-            mshoBlog
+    <div class="main main-raised">
+        <div class="container">
+            <div class="section text-center section-landing">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h2 class="title">关于</h2>
+                        <h5 class="description">mshoBlog</h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @stop
