@@ -10,7 +10,7 @@
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="javascript:void(0)">主页</a></li>
+                <li><a href="{{ route('home') }}">主页</a></li>
                 <li><a href="javascript:void(0)">帖子</a></li>
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">种类
@@ -19,31 +19,17 @@
                         <li><a href="javascript:void(0)">种类1</a></li>
                         <li><a href="javascript:void(0)">种类2</a></li>
                         <li><a href="javascript:void(0)">种类3</a></li>
-                        <li class="divider"></li>
-                        <li class="dropdown-header">Dropdown header</li>
-                        <li><a href="javascript:void(0)">Separated link</a></li>
-                        <li><a href="javascript:void(0)">One more separated link</a></li>
                     </ul>
                 </li>
             </ul>
             <form class="navbar-form navbar-left">
                 <div class="form-group">
-                    <input type="text" class="form-control col-md-8" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="搜索">
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:void(0)">Link</a></li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Dropdown
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0)">Action</a></li>
-                        <li><a href="javascript:void(0)">Another action</a></li>
-                        <li><a href="javascript:void(0)">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="javascript:void(0)">Separated link</a></li>
-                    </ul>
-                </li>
+                <li><a href="javascript:void(0)">登录</a></li>
+                <li><a href="javascript:void(0)">注册</a></li>
             </ul>
         </div>
     </div>

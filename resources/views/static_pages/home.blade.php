@@ -3,10 +3,10 @@
 
 @section('content')
     <div class="jumbotron">
-        <h1>Jumbotron</h1>
+        <h1>Welcome</h1>
 
-        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p>这里是低调君的Blog</p>
 
-        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+        <p><a class="btn btn-primary btn-lg">看看我在这写了什么</a></p>
     </div>
 @stop

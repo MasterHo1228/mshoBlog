@@ -1,6 +1,6 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 
 // Variables
 @import "variables";
@@ -10,6 +10,12 @@
 
 // Bootstrap Material
 @import "node_modules/bootstrap-material-design/sass/bootstrap-material-design";
+
+/* Universal */
+
+body{
+  font-family: 'Roboto', sans-serif ;
+}
 
 /* footer */
 
