@@ -44,7 +44,9 @@
                                     <form action="{{ route('signout') }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                        <button class="btn btn-block btn-danger" type="submit" name="button">登出</button>
+                                        <button class="btn btn-simple btn-sm btn-block btn-danger" type="submit"
+                                                name="button">登出
+                                        </button>
                                     </form>
                                 </a>
                             </li>

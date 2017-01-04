@@ -21,7 +21,8 @@
                 </a>
                 &nbsp;&nbsp;
                 <a class="home-links wechat_link" href="javascript:void(0)" target="_blank" data-toggle="tooltip"
-                   data-placement="bottom" title="<img src='/images/wechat_qrcode.jpg' width='150' height='150'/>">
+                   data-placement="bottom"
+                   title="<p>微信</p><img src='/images/wechat_qrcode.jpg' width='150' height='150'/>">
                     <i class="fa fa-wechat fa-2x"></i>
                 </a>
                 &nbsp;&nbsp;

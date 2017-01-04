@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'masterho1228@gmail.com',
             'password' => '123456',
             'gender' => 'male',
+            'description' => '一个闷骚到极致的程序猿~~~',
             'is_admin' => true,
             'activated' => true,
         ]);
