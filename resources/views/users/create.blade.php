@@ -2,9 +2,9 @@
 @section('title','注册')
 
 @section('content')
-    @include('shared.errors')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @include('shared.errors')
             <form class="form-horizontal contact-form" method="post" action="{{ route('users.store') }}">
                 {{ csrf_field() }}
                 <fieldset>
@@ -62,7 +62,7 @@
                     <div class="form-group">
                         <div class="col-md-10 col-md-offset-2">
                             <button type="submit" class="btn btn-success btn-raised">提交</button>
-                            <button type="button" class="btn btn-default btn-raised">取消</button>
+                            <a href="javascript:history.back()" class="btn btn-default btn-raised">取消</a>
                         </div>
                     </div>
                 </fieldset>

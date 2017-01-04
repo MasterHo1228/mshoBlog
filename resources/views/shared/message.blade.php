@@ -1,12 +1,8 @@
 @foreach (['danger', 'warning', 'success', 'info'] as $msg)
     @if(session()->has($msg))
-        <div class="flash-message">
-            <p class="alert alert-{{ $msg }}">
-                <a href="#" class="close" data-dismiss="alert">
-                    &times;
-                </a>
-                {{ session()->get($msg) }}
-            </p>
+        <div class="alert alert-{{ $msg }} alert-fixed">
+            <button href="#" class="close" data-dismiss="alert">&times;</button>
+            {{ session()->get($msg) }}
         </div>
     @endif
 @endforeach

@@ -2,9 +2,9 @@
 @section('title','登录')
 
 @section('content')
-    @include('shared.errors')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @include('shared.errors')
             <form class="form-horizontal" method="post" action="{{ route('signin') }}">
                 {{ csrf_field() }}
                 <fieldset>
