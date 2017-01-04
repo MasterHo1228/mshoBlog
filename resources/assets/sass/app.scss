@@ -1,6 +1,6 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+//@import url(https://fonts.googleapis.com/css?family=Roboto);
 
 // Variables
 @import "variables";
@@ -21,6 +21,11 @@ body{
   right: 0;
   top: 80px;
   z-index: 999999;
+}
+
+/* home */
+.home-links {
+  color: #FFFFFF;
 }
 
 /* footer */

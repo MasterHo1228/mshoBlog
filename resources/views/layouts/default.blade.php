@@ -11,18 +11,8 @@
 <body class="@yield('pageType','')">
 @include('layouts._header')
 <div class="wrapper">
-    <div class="header header-filter" style="background-image: url(@yield('bg_image','/images/city.jpg'));">
-        @include('shared.message')
-        @if(Request::is('/'))
-            @include('static_pages._index_header')
-        @endif
-    </div>
-    @if(!Request::is('/'))
-    <div class="main main-raised">
-        @yield('content')
-    </div>
-    @endif
-    @include('layouts._footer')
+    @include('layouts._page_header')
+    @include('layouts._page_content')
 </div>
 </body>
 <script src="/js/app.js"></script>

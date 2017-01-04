@@ -31,7 +31,7 @@ class UsersController extends Controller
 
         $this->sendEmailConfirmationTo($user);
         session()->flash('success', '验证邮件已发送到你的注册邮箱上，请注意查收。');
-        return redirect('/');
+        return redirect()->route('signin');
     }
 
     protected function sendEmailConfirmationTo($user)

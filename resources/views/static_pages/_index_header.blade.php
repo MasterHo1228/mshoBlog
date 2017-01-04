@@ -8,10 +8,23 @@
                 去看看我在这里写了什么
             </a>
             <br/>
+            <br/>
             <p>
-                <a href="http://weibo.com/206068829" target="_blank">
-                    <i class="fa fa-weibo"></i>
+                <a class="home-links" href="http://weibo.com/206068829" target="_blank" data-toggle="tooltip"
+                   title="新浪微博">
+                    <i class="fa fa-weibo fa-2x"></i>
                 </a>
+                &nbsp;&nbsp;
+                <a class="home-links" href="https://github.com/MasterHo1228" target="_blank" data-toggle="tooltip"
+                   title="Github">
+                    <i class="fa fa-github fa-2x"></i>
+                </a>
+                &nbsp;&nbsp;
+                <a class="home-links wechat_link" href="javascript:void(0)" target="_blank" data-toggle="tooltip"
+                   data-placement="bottom" title="<img src='/images/wechat_qrcode.jpg' width='150' height='150'/>">
+                    <i class="fa fa-wechat fa-2x"></i>
+                </a>
+                &nbsp;&nbsp;
             </p>
         </div>
     </div>

@@ -21,4 +21,5 @@ const app = new Vue({
 
 $(document).ready(function() {
     $.material.init();
+    $(".wechat_link").tooltip({html: true});
 });

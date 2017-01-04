@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Roboto);
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -10742,6 +10741,11 @@ body {
     right: 0;
     top: 80px;
     z-index: 999999;
+}
+
+/* home */
+.home-links {
+    color: #FFFFFF;
 }
 
 /* footer */
