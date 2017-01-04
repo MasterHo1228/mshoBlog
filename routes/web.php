@@ -17,11 +17,11 @@ Route::get('/about', 'StaticPagesController@about')->name('about');
 
 //Users
 Route::get('/signup', 'UsersController@create')->name('signup');
-Route::resource('users', 'UsersController');
+//Route::resource('users', 'UsersController');
 //Activation
 Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
 
 //Sessions
-Route::get('signin','SessionsController@create')->name('signin');
-Route::post('signin','SessionsController@store')->name('signin');
-Route::delete('signout', 'SessionsController@destroy')->name('signout');
+//Route::get('signin','SessionsController@create')->name('signin');
+//Route::post('signin','SessionsController@store')->name('signin');
+//Route::delete('signout', 'SessionsController@destroy')->name('signout');

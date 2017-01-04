@@ -33,8 +33,9 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Models\Articles::class, function (Faker\Generator $faker) {
     $date_time = $faker->date . ' ' . $faker->time;
     return [
-        'title' => $faker->text(),
+        'title' => $faker->title,
         'content' => $faker->text(),
+        'read_count' => $faker->numberBetween(0, 1024),
         'created_at' => $date_time,
         'updated_at' => $date_time,
         'isTopDisplay' => false,

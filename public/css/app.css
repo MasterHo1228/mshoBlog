@@ -10788,4 +10788,40 @@ footer .slogon {
   font-weight: bold;
 }
 
+/* article */
+.articles {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.articles li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    position: relative;
+}
+
+.articles .title {
+    font-size: 22px;
+    margin-top: 5em;
+    padding-top: 0;
+}
+
+.articles .content {
+    display: block;
+    margin-left: 0;
+    word-break: break-word;
+}
+
+.articles .content img {
+    display: block;
+    padding: 5px 0;
+}
+
+.articles .timestamp {
+    color: #777777;
+    display: block;
+    margin-left: 0;
+}
+
 /*# sourceMappingURL=app.css.map */

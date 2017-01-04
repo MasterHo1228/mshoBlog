@@ -4,9 +4,7 @@
             <h1 class="title">Just do it when you decide to do it.</h1>
             <h3>这里就是低调君的黑科技研究室</h3>
             <br/>
-            <a href="#" class="btn btn-success btn-raised btn-lg">
-                去看看我在这里写了什么
-            </a>
+            <h4>&#64;MasterHo1228</h4>
             <br/>
             <br/>
             <p>
@@ -21,7 +19,7 @@
                 </a>
                 &nbsp;&nbsp;
                 <a class="home-links wechat_link" href="javascript:void(0)" target="_blank" data-toggle="tooltip"
-                   data-placement="bottom"
+                   data-placement="right"
                    title="<p>微信</p><img src='/images/wechat_qrcode.jpg' width='150' height='150'/>">
                     <i class="fa fa-wechat fa-2x"></i>
                 </a>

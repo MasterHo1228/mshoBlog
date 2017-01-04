@@ -68,3 +68,35 @@ footer {
     font-weight: bold;
   }
 }
+
+/* article */
+
+.articles {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    position: relative;
+  }
+  .title {
+    font-size: 22px;
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 0;
+    word-break: break-word;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 0;
+  }
+}

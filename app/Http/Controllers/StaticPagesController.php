@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Articles;
 
 class StaticPagesController extends Controller
 {
     public function home(){
-        return view('static_pages.home');
+        $articles = new Articles();
+        $feed_items = $articles->getLatestArticles();
+        return view('static_pages.home', compact('feed_items'));
     }
 
     public function about(){
