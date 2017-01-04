@@ -17,9 +17,11 @@
             @include('static_pages._index_header')
         @endif
     </div>
+    @if(!Request::is('/'))
     <div class="main main-raised">
         @yield('content')
     </div>
+    @endif
     @include('layouts._footer')
 </div>
 </body>

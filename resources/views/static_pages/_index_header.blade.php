@@ -7,6 +7,12 @@
             <a href="#" class="btn btn-success btn-raised btn-lg">
                 去看看我在这里写了什么
             </a>
+            <br/>
+            <p>
+                <a href="http://weibo.com/206068829" target="_blank">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </p>
         </div>
     </div>
 </div>
