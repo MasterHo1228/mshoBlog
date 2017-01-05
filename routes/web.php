@@ -37,7 +37,6 @@ Route::group(['middleware' => 'guest'],function() {
     Route::post('login', 'Auth\LoginController@login');
 });
 
-
 //Users
 //Route::get('/signup', 'UsersController@create')->name('signup');
 //Route::resource('users', 'UsersController');

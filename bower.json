@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "sb-admin-2": "*"
+    "sb-admin-2": "*",
+    "metisMenu": "^2.6.1"
   }
 }
