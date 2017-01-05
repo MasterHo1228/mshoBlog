@@ -10743,6 +10743,10 @@ body {
     z-index: 999999;
 }
 
+.description {
+    text-indent: 15px;
+}
+
 /* home */
 .home-links {
     color: #FFFFFF;
@@ -10805,6 +10809,10 @@ footer .slogon {
     font-size: 22px;
     margin-top: 5em;
     padding-top: 0;
+}
+
+.articles .title small {
+    font-size: 12px;
 }
 
 .articles .content {

@@ -25,3 +25,6 @@ Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('conf
 //Route::get('signin','SessionsController@create')->name('signin');
 //Route::post('signin','SessionsController@store')->name('signin');
 //Route::delete('signout', 'SessionsController@destroy')->name('signout');
+
+//Articles
+Route::resource('articles', 'ArticlesController', ['only' => ['create', 'show', 'store', 'edit', 'update', 'destroy']]);

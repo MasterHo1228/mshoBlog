@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Articles;
+use App\Models\Article;
 
 class StaticPagesController extends Controller
 {
     public function home(){
-        $articles = new Articles();
+        $articles = new Article();
         $feed_items = $articles->getLatestArticles();
         return view('static_pages.home', compact('feed_items'));
     }

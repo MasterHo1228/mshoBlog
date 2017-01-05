@@ -23,6 +23,10 @@ body{
   z-index: 999999;
 }
 
+.description {
+  text-indent: 15px;
+}
+
 /* home */
 .home-links {
   color: #FFFFFF;
@@ -84,6 +88,9 @@ footer {
     font-size: 22px;
     margin-top: 5em;
     padding-top: 0;
+    small {
+      font-size: 12px;
+    }
   }
   .content {
     display: block;
