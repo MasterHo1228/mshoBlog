@@ -3,6 +3,6 @@
         @foreach ($feed_items as $article)
             @include('articles._article_simple')
         @endforeach
-        {!! $feed_items->render() !!}
     </ol>
+    {!! $feed_items->render() !!}
 @endif

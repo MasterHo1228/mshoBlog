@@ -28,3 +28,9 @@ Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('conf
 
 //Articles
 Route::resource('articles', 'ArticlesController', ['only' => ['create', 'show', 'store', 'edit', 'update', 'destroy']]);
+
+//backend
+Route::group(['prefix' => 'backyard', 'middleware' => 'auth'], function () {
+    Route::resource('home', 'Backend\HomeController');
+    Route::resource('article', 'Backend\ArticlesController');
+});
