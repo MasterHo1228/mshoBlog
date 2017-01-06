@@ -19,13 +19,14 @@
             </section>
             <!-- Main content -->
             <section class="content">
+                @include('shared.errors')
                 @yield('page_content')
             </section>
             <!-- /.content -->
+            @include('shared.message')
         </div>
         <!-- /.content-wrapper -->
         @include('backend.main._footer')
-        @include('backend.main._control_sidebar')
     </div>
     <!-- ./wrapper -->
 @stop
