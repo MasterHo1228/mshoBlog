@@ -5,14 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>博客管理 -- 低调君的黑科技实验室</title>
-    <link href="/css/backend.css" rel="stylesheet">
-    {{--<link href="/css/metisMenu.css" rel="stylesheet">--}}
+    <link rel="stylesheet" href="/backend/css/all.min.css">
 </head>
-<body>
+<body class="hold-transition skin-blue sidebar-mini">
+    @include('shared.message')
     @yield('content')
 </body>
-{{--<script src="/js/metisMenu.js"></script>--}}
-<script src="/js/backend.js"></script>
+<script src="/backend/js/all.min.js"></script>
 </html>

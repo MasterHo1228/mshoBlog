@@ -9,6 +9,7 @@
                         <h3 class="panel-title">登录</h3>
                     </div>
                     <div class="panel-body">
+                        @include('shared.errors')
                         <form role="form" method="post" action="{{ url('/login') }}">
                             {{ csrf_field() }}
                             <fieldset>

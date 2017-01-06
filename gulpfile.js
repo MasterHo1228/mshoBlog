@@ -17,25 +17,27 @@ elixir((mix) => {
     mix.sass('app.scss')
        .webpack('app.js');
 
+//AdminLTE
 mix.styles([
-    '../../../node_modules/bootstrap/dist/css/bootstrap.css',
-    '../../../node_modules/font-awesome/css/font-awesome.css',
-    '../../../bower_components/metisMenu/dist/metisMenu.css',
-    '../../../bower_components/sb-admin-2/css/sb-admin-2.css'
-],'public/css/backend.css');
-
+    '../../../node_modules/bootstrap/dist/css/bootstrap.min.css',
+    '../../../node_modules/font-awesome/css/font-awesome.min.css',
+    '../../../node_modules/admin-lte/dist/css/AdminLTE.min.css',
+    '../../../node_modules/admin-lte/dist/css/skins/skin-blue.min.css'
+],'public/backend/css/all.min.css');
 mix.scripts([
-    '../../../node_modules/jquery/dist/jquery.js',
-    '../../../node_modules/bootstrap/dist/js/bootstrap.js',
-    '../../../bower_components/metisMenu/dist/metisMenu.js',
-    '../../../bower_components/sb-admin-2/js/sb-admin-2.js'
-],'public/js/backend.js');
+    '../../../node_modules/jquery/dist/jquery.min.js',
+    '../../../node_modules/bootstrap/dist/js/bootstrap.min.js',
+    '../../../node_modules/admin-lte/dist/js/app.min.js'
+],'public/backend/js/all.min.js');
 
+//fonts
 mix.copy(
     'resources/assets/fonts', 'public/fonts'
 );
-
 mix.copy(
     'node_modules/font-awesome/fonts', 'public/fonts'
+);
+mix.copy(
+    'node_modules/font-awesome/fonts', 'public/backend/fonts'
 );
 });
