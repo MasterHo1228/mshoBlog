@@ -27,11 +27,10 @@ Route::group(['middleware' => 'guest'],function() {
 //后台
 Route::group(['prefix' => 'backyard'],function (){
     Route::group(['middleware' => 'auth'],function() {
-//        Route::any('/','backend\HomeController@index');
         Route::get('/', 'backend\HomeController@index');
         Route::delete('/logout', 'Auth\LoginController@logout');
         Route::resource('home', 'Backend\HomeController');
-        Route::resource('article', 'Backend\ArticlesController');
+        Route::resource('articles', 'Backend\ArticlesController');
     });
 });
 Route::group(['middleware' => 'guest'],function() {

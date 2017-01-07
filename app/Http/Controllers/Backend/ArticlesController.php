@@ -28,15 +28,13 @@ class ArticlesController extends Controller
         $article->save();
 
         session()->flash('success', '文章发布成功！');
-        //TODO 到时改回跳转到文章列表
-        return redirect('/backyard');
+        return redirect('/backyard/articles');
     }
 
     public function index()
     {
-        $articles = new Article();
-        $article_list = $articles->getLatestArticles();
+        $articles_list = Article::all();
 
-//        return view('')
+        return view('backend.content.articles.index', compact('articles_list'));
     }
 }

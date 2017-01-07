@@ -8,13 +8,11 @@
     <title>博客管理 -- 低调君的黑科技实验室</title>
     <link rel="stylesheet" href="/backend/css/all.min.css">
     @yield('external_css')
-    {!! editor_css() !!}
+
 </head>
 <body class="@yield('body_style')">
     @yield('content')
 </body>
 <script src="/backend/js/all.min.js"></script>
 @yield('external_scripts')
-{!! editor_js() !!}
-{!! editor_config('mdeditor') !!}
 </html>

@@ -23,8 +23,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('backyard/article/create') }}"><i class="fa fa-plus"></i> 写文章</a></li>
-                    <li><a href="#"><i class="fa fa-list-alt"></i> 文章管理</a></li>
+                    <li><a href="{{ url('backyard/articles/create') }}"><i class="fa fa-plus"></i> 写文章</a></li>
+                    <li><a href="{{ url('backyard/articles') }}"><i class="fa fa-list-alt"></i> 文章管理</a></li>
                 </ul>
             </li>
             <li><a href="#"><i class="fa fa-tags"></i> <span>种类</span></a></li>
