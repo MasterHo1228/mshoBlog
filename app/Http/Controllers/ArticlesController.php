@@ -19,6 +19,9 @@ class ArticlesController extends Controller
         $article->read_count = $article->read_count + 1;
         $article->save();
 
-        return view('articles.show', compact('article'));
+        $Parsedown = new \Parsedown();
+        $article_content = $Parsedown->text($article->content);
+
+        return view('articles.show', compact('article', 'article_content'));
     }
 }
