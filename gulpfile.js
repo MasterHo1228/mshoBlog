@@ -27,12 +27,19 @@ mix.styles([
 mix.scripts([
     '../../../node_modules/jquery/dist/jquery.min.js',
     '../../../node_modules/bootstrap/dist/js/bootstrap.min.js',
+    '../../../node_modules/icheck/icheck.min.js',
     '../../../node_modules/admin-lte/dist/js/app.min.js'
 ],'public/backend/js/all.min.js');
+mix.copy(
+    'node_modules/icheck/skins', 'public/backend/skins'
+);
 
 //fonts
 mix.copy(
     'resources/assets/fonts', 'public/fonts'
+);
+mix.copy(
+    'node_modules/bootstrap/fonts', 'public/backend/fonts'
 );
 mix.copy(
     'node_modules/font-awesome/fonts', 'public/fonts'

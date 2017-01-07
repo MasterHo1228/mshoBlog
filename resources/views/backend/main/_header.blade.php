@@ -43,7 +43,11 @@
                                 <a href="#" class="btn btn-default btn-flat">个人资料</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">登出</a>
+                                <form action="{{ url('/backyard/logout') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit" class="btn btn-default btn-flat">登出</button>
+                                </form>
                             </div>
                         </li>
                     </ul>

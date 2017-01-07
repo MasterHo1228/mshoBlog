@@ -1,4 +1,5 @@
 @extends('backend.layout.default')
+@section('body_style','hold-transition skin-blue sidebar-mini')
 
 @section('content')
     <div class="wrapper">
@@ -6,6 +7,7 @@
         @include('backend.main._sidebar')
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+        @include('shared.message')
         <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
@@ -23,7 +25,6 @@
                 @yield('page_content')
             </section>
             <!-- /.content -->
-            @include('shared.message')
         </div>
         <!-- /.content-wrapper -->
         @include('backend.main._footer')

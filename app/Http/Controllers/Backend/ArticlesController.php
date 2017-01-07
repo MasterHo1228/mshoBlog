@@ -21,11 +21,6 @@ class ArticlesController extends Controller
             'content' => 'required'
         ]);
 
-//        Article::create([
-//            'title'=>$request->title,
-//            'type'=>$request->type,
-//            'content'=>$request->content,
-//        ]);
         $article = new Article();
         $article->title = $request->title;
         $article->type = $request->type;
@@ -35,5 +30,13 @@ class ArticlesController extends Controller
         session()->flash('success', '文章发布成功！');
         //TODO 到时改回跳转到文章列表
         return redirect('/backyard');
+    }
+
+    public function index()
+    {
+        $articles = new Article();
+        $article_list = $articles->getLatestArticles();
+
+//        return view('')
     }
 }

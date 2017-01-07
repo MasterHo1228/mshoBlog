@@ -16,6 +16,7 @@
     "vue-resource": "^1.0.3",
     "bootstrap-material-design": "^0.5.10",
     "font-awesome": "^4.7.0",
+    "icheck": "^1.0.2",
     "admin-lte": "^2.3.8"
   },
   "dependencies": {
