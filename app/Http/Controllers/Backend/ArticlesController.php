@@ -66,4 +66,15 @@ class ArticlesController extends Controller
         session()->flash('success', '文章更新成功！');
         return redirect('backyard/articles');
     }
+
+    public function show($id, Request $request)
+    {
+        if ($request->isMethod('get')) {
+            $article = new Article();
+            $Parsedown = new \Parsedown();
+            $content = $Parsedown->text($article->getPreviewContentById($id));
+
+            return response()->json(['data' => $content]);
+        }
+    }
 }

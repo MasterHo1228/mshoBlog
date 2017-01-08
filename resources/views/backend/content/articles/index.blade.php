@@ -27,9 +27,13 @@
                                 <td>{{ $article->type }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-xs btn-success">预览</a>
+                                    <button class="btn btn-xs btn-success btnPreview" data-value="{{ $article->id }}">
+                                        预览
+                                    </button>
                                     <a href="{{ route('articles.edit',$article->id) }}" class="btn btn-xs btn-primary">编辑</a>
-                                    <a href="#" class="btn btn-xs btn-danger">删除</a>
+                                    <button class="btn btn-xs btn-danger" data-toggle="modal"
+                                            data-target="#alertDeleteDialog" data-value="{{ $article->id }}">删除
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
@@ -50,6 +54,46 @@
             <!-- /.box -->
         </div>
     </div>
+
+    <div class="modal fade" id="articlePreviewDialog" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">文章预览</h4>
+                </div>
+                <div class="modal-body" id="previewArticleContent">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="modal modal-danger fade" id="alertDeleteDialog" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">删除文章</h4>
+                </div>
+                <div class="modal-body">
+                    <p>确定要删除文章吗？删除文章后将无法恢复。</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-outline" id="confirmDeleteArticle">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 @stop
 @section('external_scripts')
     <script>
@@ -80,6 +124,21 @@
                     }
                 }
             });
+
+            $(".btnPreview").click(function () {
+                var show_id = $(this).attr('data-value');
+                if (show_id != '') {
+                    $.ajax({
+                        url: "{{ url('/backyard/articles') }}/" + show_id,
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (response) {
+                            $("#previewArticleContent").empty().append(response.data);
+                            $("#articlePreviewDialog").modal('show');
+                        }
+                    })
+                }
+            })
         });
     </script>
 @stop

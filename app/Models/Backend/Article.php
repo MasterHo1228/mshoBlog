@@ -24,4 +24,9 @@ class Article extends Model
         $user = User::findOrFail(Auth::user()->id);
         return $user->articles()->orderBy('created_at', 'desc')->paginate(30);
     }
+
+    public function getPreviewContentById($id)
+    {
+        return self::findOrFail($id)->content;
+    }
 }
