@@ -22,11 +22,6 @@ class ArticlesController extends Controller
             'content' => 'required'
         ]);
 
-//        $article = new Article();
-//        $article->title = $request->title;
-//        $article->type = $request->type;
-//        $article->content = $request->content;
-//        $article->save();
         Auth::user()->articles()->create([
             'title' => $request->title,
             'type' => $request->type,
@@ -47,6 +42,28 @@ class ArticlesController extends Controller
 
     public function edit($id)
     {
+        $article = Article::findOrFail($id);
+        $types = ArticleTypes::all();
+        return view('backend.content.articles.edit', compact('article', 'types'));
+    }
 
+    public function update($id, Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'type' => 'required',
+            'content' => 'required'
+        ]);
+
+        $article = Article::findOrFail($id);
+        $data = array_filter([
+            'title' => $request->title,
+            'type' => $request->type,
+            'content' => $request->content,
+        ]);
+        $article->update($data);
+
+        session()->flash('success', '文章更新成功！');
+        return redirect('backyard/articles');
     }
 }

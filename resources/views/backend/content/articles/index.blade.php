@@ -28,7 +28,7 @@
                                 <td>{{ $article->created_at }}</td>
                                 <td>
                                     <a href="#" class="btn btn-xs btn-success">预览</a>
-                                    <a href="#" class="btn btn-xs btn-primary">编辑</a>
+                                    <a href="{{ route('articles.edit',$article->id) }}" class="btn btn-xs btn-primary">编辑</a>
                                     <a href="#" class="btn btn-xs btn-danger">删除</a>
                                 </td>
                             </tr>
@@ -59,6 +59,7 @@
                 lengthChange: true,
                 searching: true,
                 ordering: true,
+                order: [[3, "desc"]],
                 info: true,
                 autoWidth: false,
                 retrieve: true,
