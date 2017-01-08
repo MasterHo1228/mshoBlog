@@ -9,7 +9,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-body">
-                    <table id="articleList" class="table table-bordered table-striped">
+                    <table id="articlesList" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>标题</th>
@@ -54,7 +54,7 @@
 @section('external_scripts')
     <script>
         $(function () {
-            $("#articleList").DataTable({
+            $("#articlesList").DataTable({
                 paging: true,
                 lengthChange: true,
                 searching: true,

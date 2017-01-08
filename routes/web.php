@@ -11,17 +11,19 @@
 |
 */
 
-//Static pages
-Route::get('/', 'StaticPagesController@home')->name('home');
-Route::get('/about', 'StaticPagesController@about')->name('about');
+Route::group(['prefix' => '/'], function () {
+    //Static pages
+    Route::get('/', 'StaticPagesController@home')->name('home');
+    Route::get('/about', 'StaticPagesController@about')->name('about');
 
-//Articles
-Route::resource('articles', 'ArticlesController', ['only' => ['show']]);
+    //Articles
+    Route::resource('articles', 'ArticlesController', ['only' => ['show']]);
 
-//前台
-Route::group(['middleware' => 'guest'],function() {
-    Route::get('signin','SessionsController@create')->name('signin');
-    Route::post('signin','SessionsController@store')->name('signin');
+    //前台
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('signin', 'SessionsController@create')->name('signin');
+        Route::post('signin', 'SessionsController@store')->name('signin');
+    });
 });
 
 //后台

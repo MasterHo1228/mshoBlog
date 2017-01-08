@@ -1,6 +1,6 @@
 <li id="article-{{ $article->id }}">
     <span class="title">
-        <a href="{{ route('articles.show',$article->id) }}">{{ $article->title }}</a>
+        <a href="{{ url('/articles',$article->id) }}">{{ $article->title }}</a>
         <small>(阅读次数:{{ $article->read_count }})</small>
     </span>
     <span class="content">{{ str_limit(strip_tags((new Parsedown())->text($article->content)), $limit = 130, $end = '...') }}</span>
