@@ -126,6 +126,13 @@
                 searching: true,
                 ordering: true,
                 order: [[3, "desc"]],
+                aoColumns: [
+                    null,
+                    null,
+                    null,
+                    null,
+                    {"bSortable": false}
+                ],
                 info: true,
                 autoWidth: false,
                 retrieve: true,
