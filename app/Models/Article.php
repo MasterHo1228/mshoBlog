@@ -6,13 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function getLatestArticles($limit = 8)
     {
-        return $this->select(['id', 'title', 'read_count', 'content', 'created_at'])->orderBy('id', 'DESC')->paginate($limit);
+        return self::orderBy('created_at', 'desc')->paginate($limit);
     }
 
     public function getMostPopularArticles($limit = 5)
     {
-        return $this->select(['id', 'title', 'read_count', 'content', 'created_at'])->orderBy('read_count', 'DESC')->paginate($limit);
+        return self::orderBy('read_count', 'desc')->paginate($limit);
     }
 }

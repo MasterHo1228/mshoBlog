@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Tag;
 
 class StaticPagesController extends Controller
 {
     public function home(){
         $articles = new Article();
         $feed_items = $articles->getLatestArticles();
-        return view('static_pages.home', compact('feed_items'));
+        $tags = (new Tag())->getList();
+
+        return view('static_pages.home', compact('feed_items', 'tags'));
     }
 
     public function about(){

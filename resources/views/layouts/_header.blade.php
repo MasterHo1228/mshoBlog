@@ -11,17 +11,6 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navigation">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">帖子
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="javascript:void(0)">PHP</a></li>
-                        <li><a href="javascript:void(0)">生活</a></li>
-                        <li><a href="javascript:void(0)">其他</a></li>
-                    </ul>
-                </li>
-            </ul>
             <form class="navbar-form navbar-left">
                 <div class="input-group">
                     <span class="input-group-addon">

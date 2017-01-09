@@ -19,6 +19,9 @@ Route::group(['prefix' => '/'], function () {
     //Articles
     Route::resource('articles', 'ArticlesController', ['only' => ['show']]);
 
+    //Tags
+    Route::resource('tags', 'TagsController', ['only' => 'index']);
+
     //前台
     Route::group(['middleware' => 'guest'], function () {
         Route::get('signin', 'SessionsController@create')->name('signin');
