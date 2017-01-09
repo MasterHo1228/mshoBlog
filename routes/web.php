@@ -30,13 +30,14 @@ Route::group(['prefix' => '/'], function () {
 Route::group(['prefix' => 'backyard'],function (){
     Route::group(['middleware' => 'auth'],function() {
         Route::get('/', 'backend\HomeController@index');
+        Route::get('/index', 'backend\HomeController@index');
         Route::delete('/logout', 'Auth\LoginController@logout');
         Route::resource('home', 'Backend\HomeController');
         Route::resource('articles', 'Backend\ArticlesController');
     });
     Route::group(['middleware' => 'guest'],function() {
-        Route::get('login', 'Auth\LoginController@showLoginForm');
-        Route::post('login', 'Auth\LoginController@login');
+        Route::get('login', 'Backend\Auth\LoginController@showLoginForm');
+        Route::post('login', 'Backend\Auth\LoginController@login');
     });
 });
 
