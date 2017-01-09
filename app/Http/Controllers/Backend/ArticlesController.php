@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Article;
-use App\Models\Backend\ArticleTypes;
+use App\Models\Backend\Tag;
 use App\Models\Backend\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,22 +12,31 @@ use Illuminate\Support\Facades\Auth;
 class ArticlesController extends Controller
 {
     public function create(){
-        $types = ArticleTypes::all();
-        return view('backend.content.articles.create',compact('types'));
+        return view('backend.content.articles.create');
     }
 
     public function store(Request $request){
         $this->validate($request,[
             'title' => 'required',
-            'type' => 'required',
-            'content' => 'required'
+            'content' => 'required',
+            'tags' => ['required', 'regex:/^\w+$|^(\w+,)+\w+$/'],
         ]);
 
-        Auth::user()->articles()->create([
-            'title' => $request->title,
-            'type' => $request->type,
-            'content' => $request->content,
-        ]);
+        $article = new Article();
+        $article->title = $request->title;
+        $article->content = $request->content;
+        $article->user_id = Auth::id();
+        $article->save();
+
+        $tags = explode(',', $request->tags);
+        foreach ($tags as $tagName) {
+            $tag = Tag::whereName($tagName)->first();
+            if (!$tag) {
+                $tag = Tag::create(array('name' => $tagName));
+            }
+            $tag->count++;
+            $article->tags()->save($tag);
+        }
 
         session()->flash('success', '文章发布成功！');
         return redirect('/backyard/articles');
@@ -44,22 +53,22 @@ class ArticlesController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        $types = ArticleTypes::all();
-        return view('backend.content.articles.edit', compact('article', 'types'));
+//        $types = ArticleTypes::all();
+        return view('backend.content.articles.edit', compact('article'));
     }
 
     public function update($id, Request $request)
     {
         $this->validate($request, [
             'title' => 'required',
-            'type' => 'required',
+//            'type' => 'required',
             'content' => 'required'
         ]);
 
         $article = Article::findOrFail($id);
         $data = array_filter([
             'title' => $request->title,
-            'type' => $request->type,
+//            'type' => $request->type,
             'content' => $request->content,
         ]);
         $article->update($data);

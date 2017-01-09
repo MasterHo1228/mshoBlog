@@ -14,7 +14,7 @@
                         <tr>
                             <th>标题</th>
                             <th>阅读数</th>
-                            <th>种类</th>
+                            {{--<th>种类</th>--}}
                             <th>发布日期</th>
                             <th>操作</th>
                         </tr>
@@ -24,7 +24,7 @@
                             <tr>
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->read_count }}</td>
-                                <td>{{ $article->type }}</td>
+                                {{--<td>{{ $article->type }}</td>--}}
                                 <td>{{ $article->created_at }}</td>
                                 <td>
                                     <button class="btn btn-xs btn-success btnPreview" data-value="{{ $article->id }}">
@@ -42,7 +42,7 @@
                         <tr>
                             <th>标题</th>
                             <th>阅读数</th>
-                            <th>种类</th>
+                            {{--<th>种类</th>--}}
                             <th>发布日期</th>
                             <th>操作</th>
                         </tr>
@@ -125,12 +125,12 @@
                 lengthChange: true,
                 searching: true,
                 ordering: true,
-                order: [[3, "desc"]],
+                order: [[2, "desc"]],
                 aoColumns: [
                     null,
                     null,
                     null,
-                    null,
+//                    null,
                     {"bSortable": false}
                 ],
                 info: true,

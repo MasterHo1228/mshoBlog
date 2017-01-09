@@ -17,14 +17,14 @@
         </div>
         <div class="form-group col-sm-10 col-sm-offset-1">
             <label for="articleTitle">类型</label>
-            <select class="form-control" id="articleType" name="type">
-                @foreach ($types as $type)
-                    <option value="{{ $type->id }}"
-                            @if($article->type == $type->id)
-                            selected
-                            @endif>{{ $type->name }}</option>
-                @endforeach
-            </select>
+            {{--<select class="form-control" id="articleType" name="type">--}}
+            {{--@foreach ($types as $type)--}}
+            {{--<option value="{{ $type->id }}"--}}
+            {{--@if($article->type == $type->id)--}}
+            {{--selected--}}
+            {{--@endif>{{ $type->name }}</option>--}}
+            {{--@endforeach--}}
+            {{--</select>--}}
         </div>
         <div id="mdeditor">
             <textarea class="form-control" name="content" style="display:none;">{{ $article->content }}</textarea>

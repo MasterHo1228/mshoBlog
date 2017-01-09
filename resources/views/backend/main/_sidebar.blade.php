@@ -15,7 +15,7 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <!-- Optionally, you can add icons to the links -->
-            <li><a href="{{ url('backyard') }}"><i class="fa fa-home"></i> <span>首页</span></a></li>
+            <li><a class="ajax_load" href="{{ url('backyard') }}"><i class="fa fa-home"></i> <span>首页</span></a></li>
             <li><a href="#">
                     <i class="fa fa-th-list"></i><span>文章</span>
                     <span class="pull-right-container">
@@ -23,11 +23,13 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('backyard/articles/create') }}"><i class="fa fa-plus"></i> 写文章</a></li>
-                    <li><a href="{{ url('backyard/articles') }}"><i class="fa fa-list-alt"></i> 文章管理</a></li>
+                    <li><a class="ajax_load" href="{{ url('backyard/articles/create') }}"><i class="fa fa-plus"></i> 写文章</a>
+                    </li>
+                    <li><a class="ajax_load" href="{{ url('backyard/articles') }}"><i class="fa fa-list-alt"></i>
+                            文章管理</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="fa fa-tags"></i> <span>种类</span></a></li>
+            <li><a class="ajax_load" href="#"><i class="fa fa-tags"></i> <span>种类</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

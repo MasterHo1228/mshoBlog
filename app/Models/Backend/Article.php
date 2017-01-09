@@ -3,25 +3,33 @@
 namespace App\Models\Backend;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 
 class Article extends Model
 {
-    protected $fillable = ['title', 'content', 'type'];
+    use SoftDeletes;
+
+    protected $fillable = ['title', 'content', 'user_id'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
     public function getAllArticles()
     {
-        return $this->select(['id', 'title', 'type', 'read_count', 'content', 'created_at'])->orderBy('id', 'DESC');
+        return self::all()->orderBy('id', 'DESC');
     }
 
     public function getCurrentUserArticles()
     {
-        $user = User::findOrFail(Auth::user()->id);
+        $user = User::findOrFail(Auth::id());
         return $user->articles()->orderBy('created_at', 'desc')->paginate(30);
     }
 

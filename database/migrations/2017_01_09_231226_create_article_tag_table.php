@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateArticleTypesTable extends Migration
+class CreateArticleTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateArticleTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_types', function (Blueprint $table) {
+        Schema::create('article_tag', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name',25)->unique();
-            $table->timestamps();
+            $table->integer('article_id');
+            $table->integer('tag_id');
         });
     }
 
@@ -27,6 +27,6 @@ class CreateArticleTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article_types');
+        Schema::dropIfExists('article_tag');
     }
 }

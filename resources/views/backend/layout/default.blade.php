@@ -14,5 +14,10 @@
     @yield('content')
 </body>
 <script src="/backend/js/all.min.js"></script>
+<script>
+    $(".ajax_load").click(function () {
+        Pace.restart();
+    })
+</script>
 @yield('external_scripts')
 </html>
