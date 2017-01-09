@@ -34,7 +34,7 @@ Route::group(['prefix' => 'backyard'],function (){
     Route::group(['middleware' => 'auth'],function() {
         Route::get('/', 'backend\HomeController@index');
         Route::get('/index', 'backend\HomeController@index');
-        Route::delete('/logout', 'Auth\LoginController@logout');
+        Route::delete('/logout', 'Backend\Auth\LoginController@logout');
         Route::resource('articles', 'Backend\ArticlesController');
     });
     Route::group(['middleware' => 'guest'],function() {
