@@ -71,7 +71,7 @@ class ArticlesController extends Controller
     public function destroy($id)
     {
         $article = Article::findOrFail($id);
-        if (User::findOrFail(Auth::user()->id)->can('destroy', $article)) {
+        if (User::findOrFail(Auth::id())->can('destroy', $article)) {
             return response()->json(['response' => 'true']);
         } else {
             return false;

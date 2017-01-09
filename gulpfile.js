@@ -31,19 +31,11 @@ mix.scripts([
     '../../../node_modules/datatables.net/js/jquery.dataTables.js',
     '../../../node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
     '../../../node_modules/icheck/icheck.min.js',
+    '../../../node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js',
     '../../../node_modules/admin-lte/dist/js/app.min.js'
 ],'public/backend/js/all.min.js');
 mix.copy(
     'node_modules/icheck/skins', 'public/backend/skins'
-);
-mix.copy(
-    'node_modules/datatables-bootstrap3-plugin/media/css/datatables-bootstrap3.css', 'public/backend/css'
-);
-mix.copy(
-    'node_modules/datatables/media/js/jquery.dataTables.min.js', 'public/backend/js'
-);
-mix.copy(
-    'node_modules/datatables-bootstrap3-plugin/media/js/datatables-bootstrap3.js', 'public/backend/js'
 );
 
 //fonts

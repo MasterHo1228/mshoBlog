@@ -107,9 +107,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal"
-                            onclick="window.reload()">关闭
-                    </button>
+                    <button type="button" class="btn btn-default pull-right" id="btnCloseDialog">关闭</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -165,7 +163,8 @@
             });
 
             $(".btnDelele").click(function () {
-                del_id = $(this).attr('data-value');
+//                del_id = $(this).attr('data-value');
+                del_id = $(this).data('value');
             });
 
             $("#confirmDeleteArticle").click(function () {
@@ -179,12 +178,22 @@
                             if (data.response == 'true') {
                                 $("#alertDeleteDialog").modal('hide');
                                 $("#msgDialogMain").empty().text('删除成功！');
+                                $("#btnCloseDialog").data('action','reload');
+
                                 $("#msgDialog").modal('show');
                             }
                         }
                     });
                 }
             });
+
+            $("#btnCloseDialog").click(function () {
+                $("#msgDialog").modal('hide');
+
+                switch ($(this).data('action')){
+                    case 'reload':window.location.reload();break;
+                }
+            })
         });
     </script>
 @stop

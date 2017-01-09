@@ -10,7 +10,7 @@
     @yield('external_css')
 
 </head>
-<body class="@yield('body_style')">
+<body class="sidebar-collapse @yield('body_style')">
     @yield('content')
 </body>
 <script src="/backend/js/all.min.js"></script>

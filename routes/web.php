@@ -34,11 +34,12 @@ Route::group(['prefix' => 'backyard'],function (){
         Route::resource('home', 'Backend\HomeController');
         Route::resource('articles', 'Backend\ArticlesController');
     });
+    Route::group(['middleware' => 'guest'],function() {
+        Route::get('login', 'Auth\LoginController@showLoginForm');
+        Route::post('login', 'Auth\LoginController@login');
+    });
 });
-Route::group(['middleware' => 'guest'],function() {
-    Route::get('login', 'Auth\LoginController@showLoginForm');
-    Route::post('login', 'Auth\LoginController@login');
-});
+
 
 //Users
 //Route::get('/signup', 'UsersController@create')->name('signup');

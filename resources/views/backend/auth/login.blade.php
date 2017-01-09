@@ -15,7 +15,7 @@
             @include('shared.errors')
             <p class="login-box-msg">请登录</p>
 
-            <form action="{{ url('/login') }}" method="post">
+            <form action="{{ url('/backyard/login') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group has-feedback">
                     <input type="email" name="email" class="form-control" placeholder="Email"
