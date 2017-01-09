@@ -31,7 +31,7 @@
                                         预览
                                     </button>
                                     <a href="{{ route('articles.edit',$article->id) }}" class="btn btn-xs btn-primary">编辑</a>
-                                    <button class="btn btn-xs btn-danger" data-toggle="modal"
+                                    <button class="btn btn-xs btn-danger btnDelele" data-toggle="modal"
                                             data-target="#alertDeleteDialog" data-value="{{ $article->id }}">删除
                                     </button>
                                 </td>
@@ -86,7 +86,30 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-outline" id="confirmDeleteArticle">确定</button>
+                    <button type="button" class="btn btn-outline" id="confirmDeleteArticle"
+                            data-token="{{ csrf_token() }}">确定
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="modal fade" id="msgDialog" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">提示</h4>
+                </div>
+                <div class="modal-body" id="msgDialogMain">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal"
+                            onclick="window.reload()">关闭
+                    </button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -97,6 +120,7 @@
 @stop
 @section('external_scripts')
     <script>
+        var del_id = '';
         $(function () {
             $("#articlesList").DataTable({
                 paging: true,
@@ -133,12 +157,34 @@
                         type: 'get',
                         dataType: 'json',
                         success: function (response) {
-                            $("#previewArticleContent").empty().append(response.data);
+                            $("#previewArticleContent").empty().html(response.data);
                             $("#articlePreviewDialog").modal('show');
                         }
                     })
                 }
-            })
+            });
+
+            $(".btnDelele").click(function () {
+                del_id = $(this).attr('data-value');
+            });
+
+            $("#confirmDeleteArticle").click(function () {
+                if (del_id != '') {
+                    var token = $(this).data('token');
+                    $.ajax({
+                        url: "{{ url('/backyard/articles') }}/" + del_id,
+                        type: 'post',
+                        data: {_method: 'delete', _token: token},
+                        success: function (data) {
+                            if (data.response == 'true') {
+                                $("#alertDeleteDialog").modal('hide');
+                                $("#msgDialogMain").empty().text('删除成功！');
+                                $("#msgDialog").modal('show');
+                            }
+                        }
+                    });
+                }
+            });
         });
     </script>
 @stop

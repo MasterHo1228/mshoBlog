@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Backend\Article;
 use App\Models\Backend\ArticleTypes;
+use App\Models\Backend\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,6 +66,16 @@ class ArticlesController extends Controller
 
         session()->flash('success', '文章更新成功！');
         return redirect('backyard/articles');
+    }
+
+    public function destroy($id)
+    {
+        $article = Article::findOrFail($id);
+        if (User::findOrFail(Auth::user()->id)->can('destroy', $article)) {
+            return response()->json(['response' => 'true']);
+        } else {
+            return false;
+        }
     }
 
     public function show($id, Request $request)
