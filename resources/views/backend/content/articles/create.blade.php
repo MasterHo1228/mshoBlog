@@ -16,13 +16,8 @@
         </div>
         <div class="form-group col-sm-10 col-sm-offset-1">
             <label for="articleTags">标签</label>
-            <input type="text" class="form-control" id="articleTags" name="tags" placeholder="在此输入标签 用,(英文字符)隔开"
+            <input type="text" class="form-control" id="articleTags" name="tags" placeholder="在此添加标签 多个标签用,(英文字符)隔开"
                    value="{{ old('tags') }}" required>
-            {{--<select class="form-control" id="articleType" name="type">--}}
-            {{--@foreach ($types as $type)--}}
-            {{--<option value="{{ $type->id }}">{{ $type->name }}</option>--}}
-            {{--@endforeach--}}
-            {{--</select>--}}
         </div>
         <div id="mdeditor">
             <textarea class="form-control" name="content" style="display:none;">{{ old('content') }}</textarea>

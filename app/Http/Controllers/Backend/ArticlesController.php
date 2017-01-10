@@ -18,8 +18,8 @@ class ArticlesController extends Controller
     public function store(Request $request){
         $this->validate($request,[
             'title' => 'required',
-            'content' => 'required',
             'tags' => ['required', 'regex:/^\w+$|^(\w+,)+\w+$/'],
+            'content' => 'required',
         ]);
 
         $article = new Article();
@@ -52,8 +52,13 @@ class ArticlesController extends Controller
 
     public function edit($id)
     {
-        $article = Article::findOrFail($id);
-//        $types = ArticleTypes::all();
+        $article = Article::with('tags')->findOrFail($id);
+        $tags = '';
+        for ($i = 0, $len = count($article->tags); $i < $len; $i++) {
+            $tags .= $article->tags[$i]->name . ($i == $len - 1 ? '' : ',');
+        }
+        $article->tags = $tags;
+
         return view('backend.content.articles.edit', compact('article'));
     }
 
@@ -61,17 +66,35 @@ class ArticlesController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-//            'type' => 'required',
+            'tags' => ['required', 'regex:/^\w+$|^(\w+,)+\w+$/'],
             'content' => 'required'
         ]);
 
+        $tags = array_unique(explode(',', $request->tags));
+
         $article = Article::findOrFail($id);
-        $data = array_filter([
-            'title' => $request->title,
-//            'type' => $request->type,
-            'content' => $request->content,
-        ]);
-        $article->update($data);
+        $article->title = $request->title;
+        $article->content = $request->content;
+        $article->user_id = Auth::id();
+        $article->save();
+
+        foreach ($article->tags as $tag) {
+            if (($index = array_search($tag->name, $tags)) !== false) {
+                unset($tags[$index]);
+            } else {
+                $tag->count--;
+                $tag->save();
+                $article->tags()->detach($tag->id);
+            }
+        }
+        foreach ($tags as $tagName) {
+            $tag = Tag::whereName($tagName)->first();
+            if (!$tag) {
+                $tag = Tag::create(array('name' => $tagName));
+            }
+            $tag->count++;
+            $article->tags()->save($tag);
+        }
 
         session()->flash('success', '文章更新成功！');
         return redirect('backyard/articles');
