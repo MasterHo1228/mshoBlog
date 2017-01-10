@@ -24,13 +24,13 @@ class Article extends Model
 
     public function getAllArticles()
     {
-        return self::all()->orderBy('id', 'DESC');
+        return self::with('user', 'tags')->all()->orderBy('id', 'DESC');
     }
 
     public function getCurrentUserArticles()
     {
         $user = User::findOrFail(Auth::id());
-        return $user->articles()->orderBy('created_at', 'desc')->paginate(30);
+        return $user->articles()->with('tags')->orderBy('created_at', 'desc')->paginate(30);
     }
 
     public function getPreviewContentById($id)

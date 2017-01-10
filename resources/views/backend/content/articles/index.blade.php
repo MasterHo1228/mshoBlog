@@ -14,7 +14,8 @@
                         <tr>
                             <th>标题</th>
                             <th>阅读数</th>
-                            {{--<th>种类</th>--}}
+                            <th>标签</th>
+                            <th>作者</th>
                             <th>发布日期</th>
                             <th>操作</th>
                         </tr>
@@ -24,7 +25,12 @@
                             <tr>
                                 <td>{{ $article->title }}</td>
                                 <td>{{ $article->read_count }}</td>
-                                {{--<td>{{ $article->type }}</td>--}}
+                                <td>
+                                    @foreach($article->tags as $tag)
+                                        <a href="#">{{ $tag->name }}</a>
+                                    @endforeach
+                                </td>
+                                <td>{{ $article->user->name }}</td>
                                 <td>{{ $article->created_at }}</td>
                                 <td>
                                     <button class="btn btn-xs btn-success btnPreview" data-value="{{ $article->id }}">
@@ -42,7 +48,8 @@
                         <tr>
                             <th>标题</th>
                             <th>阅读数</th>
-                            {{--<th>种类</th>--}}
+                            <th>标签</th>
+                            <th>作者</th>
                             <th>发布日期</th>
                             <th>操作</th>
                         </tr>
@@ -125,12 +132,13 @@
                 lengthChange: true,
                 searching: true,
                 ordering: true,
-                order: [[2, "desc"]],
+                order: [[4, "desc"]],
                 aoColumns: [
                     null,
                     null,
                     null,
-//                    null,
+                    null,
+                    null,
                     {"bSortable": false}
                 ],
                 info: true,
@@ -170,7 +178,6 @@
             });
 
             $(".btnDelele").click(function () {
-//                del_id = $(this).attr('data-value');
                 del_id = $(this).data('value');
             });
 

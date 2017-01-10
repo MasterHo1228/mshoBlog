@@ -15,7 +15,7 @@ class ArticlesController extends Controller
 
     public function show($id)
     {
-        $article = Article::findOrFail($id);
+        $article = Article::with('user', 'tags')->findOrFail($id);
         $article->read_count = $article->read_count + 1;
         $article->save();
 
