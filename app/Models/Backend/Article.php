@@ -42,6 +42,6 @@ class Article extends Model
 
     public function getPreviewContentById($id)
     {
-        return self::findOrFail($id)->content;
+        return self::withTrashed()->find($id)->content;
     }
 }

@@ -106,6 +106,12 @@ class ArticlesController extends Controller
 
         $article = Article::findOrFail($id);
         if (User::findOrFail(Auth::id())->can('delete', $article)) {
+            foreach ($article->tags as $tag) {
+                $tag->count--;
+                $tag->save();
+                $article->tags()->detach($tag->id);
+            }
+
             $article->delete();
             if ($article->trashed()) {
                 $response = 'true';
