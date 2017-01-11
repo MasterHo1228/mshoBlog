@@ -36,11 +36,14 @@ Route::group(['prefix' => 'backyard'],function (){
         Route::get('/index', 'backend\HomeController@index');
         Route::delete('/logout', 'Backend\Auth\LoginController@logout');
         Route::resource('articles', 'Backend\ArticlesController', ['except' => ['show', 'destroy']]);
-        Route::get('articles/{article}/preview', 'Backend\ArticlesController@preview');
-        Route::delete('articles/{article}', 'Backend\ArticlesController@delete');
-        Route::get('articles/trash', 'Backend\ArticlesController@trash');
-        Route::post('articles/{article}/restore', 'Backend\ArticlesController@restore');
-        Route::post('articles/{article}/destroy', 'Backend\ArticlesController@destroy');
+
+        Route::group(['prefix' => 'articles'], function () {
+            Route::get('{article}/preview', 'Backend\ArticlesController@preview');
+            Route::delete('{article}', 'Backend\ArticlesController@delete');
+            Route::get('trash', 'Backend\ArticlesController@trash');
+            Route::post('{article}/restore', 'Backend\ArticlesController@restore');
+            Route::post('{article}/destroy', 'Backend\ArticlesController@destroy');
+        });
 //        Route::resource('tags', 'Backend\TagsController',['except'=>['destroy']]);
     });
     Route::group(['middleware' => 'guest'],function() {
