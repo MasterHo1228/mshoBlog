@@ -1,9 +1,9 @@
 @extends('backend.main.main')
 
-@section('page_header','文章管理')
-@section('fa_icon','fa-th-list')
+@section('page_header','回收站')
+@section('fa_icon','fa-trash-o')
 @section('page_level','文章')
-@section('page_here','文章管理')
+@section('page_here','回收站')
 @section('page_content')
     <div class="row">
         <div class="col-xs-12">
@@ -13,32 +13,28 @@
                         <thead>
                         <tr>
                             <th>标题</th>
-                            <th>阅读数</th>
-                            <th>标签</th>
                             <th>作者</th>
                             <th>发布日期</th>
+                            <th>删除日期</th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($articles_list as $article)
+                        @foreach($articles as $article)
                             <tr>
                                 <td>{{ $article->title }}</td>
-                                <td>{{ $article->read_count }}</td>
-                                <td>
-                                    @foreach($article->tags as $tag)
-                                        <a href="#">{{ $tag->name }}</a>
-                                    @endforeach
-                                </td>
                                 <td>{{ $article->user->name }}</td>
                                 <td>{{ $article->created_at }}</td>
+                                <td>{{ $article->deleted_at }}</td>
                                 <td>
                                     <button class="btn btn-xs btn-default btnPreview" data-value="{{ $article->id }}">
                                         预览
                                     </button>
-                                    <a href="{{ route('articles.edit',$article->id) }}" class="btn btn-xs btn-primary">编辑</a>
-                                    <button class="btn btn-xs btn-danger btnDelele" data-toggle="modal"
-                                            data-target="#alertDeleteDialog" data-value="{{ $article->id }}">删除
+                                    <button class="btn btn-xs btn-success btnRestore" data-value="{{ $article->id }}">
+                                        恢复
+                                    </button>
+                                    <button class="btn btn-xs btn-danger btnDestroy" data-toggle="modal"
+                                            data-target="#alertDestroyDialog" data-value="{{ $article->id }}">彻底删除
                                     </button>
                                 </td>
                             </tr>
@@ -47,10 +43,9 @@
                         <tfoot>
                         <tr>
                             <th>标题</th>
-                            <th>阅读数</th>
-                            <th>标签</th>
                             <th>作者</th>
                             <th>发布日期</th>
+                            <th>删除日期</th>
                             <th>操作</th>
                         </tr>
                         </tfoot>
@@ -82,18 +77,18 @@
     </div>
     <!-- /.modal -->
 
-    <div class="modal modal-default fade" id="alertDeleteDialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal modal-danger fade" id="alertDestroyDialog" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">删除文章</h4>
+                    <h4 class="modal-title">彻底删除文章</h4>
                 </div>
                 <div class="modal-body">
-                    <p>确定要删除文章吗？</p>
+                    <p>确定要删除文章吗？删除文章后将无法恢复。</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-danger" id="confirmDeleteArticle">确定</button>
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-outline" id="confirmDestroyArticle">确定</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -124,16 +119,15 @@
 @section('external_scripts')
     <script>
         const TOKEN = "{{ csrf_token() }}";
-        var del_id = '';
+        var destroyID = '';
         $(function () {
             $("#articlesList").DataTable({
                 paging: true,
                 lengthChange: true,
                 searching: true,
                 ordering: true,
-                order: [[4, "desc"]],
+                order: [[3, "desc"]],
                 aoColumns: [
-                    null,
                     null,
                     null,
                     null,
@@ -165,7 +159,7 @@
                 var show_id = $(this).attr('data-value');
                 if (show_id != '') {
                     $.ajax({
-                        url: "{{ url('/backyard/articles') }}/" + show_id + "/preview",
+                        url: "{{ url('/backyard/articles') }}/" + show_id,
                         type: 'get',
                         dataType: 'json',
                         success: function (response) {
@@ -176,25 +170,48 @@
                 }
             });
 
-            $(".btnDelele").click(function () {
-                del_id = $(this).data('value');
-            });
-
-            $("#confirmDeleteArticle").click(function () {
-                if (del_id != '') {
+            $(".btnRestore").click(function () {
+                var restoreID = $(this).data('value');
+                if (restoreID != '') {
                     $.ajax({
-                        url: "{{ url('/backyard/articles') }}/" + del_id,
+                        url: "{{ url('/backyard/articles') }}/" + restoreID + "/restore",
                         type: 'post',
-                        data: {_method: 'delete', _token: TOKEN},
+                        data: {_token: TOKEN},
                         success: function (data) {
-                            $("#alertDeleteDialog").modal('hide');
                             if (data.response == 'true') {
-                                $("#msgDialogMain").empty().text('删除成功！');
-                                $("#btnCloseDialog").data('action','reload');
+                                $("#msgDialogMain").empty().text('恢复文章成功！');
+                                $("#btnCloseDialog").data('action', 'reload');
                             } else if (data.response == 'false') {
-                                $("#msgDialogMain").empty().text('删除失败！');
+                                $("#msgDialogMain").empty().text('恢复文章失败！');
                                 $("#btnCloseDialog").data('action', '');
                             }
+
+                            $("#msgDialog").modal('show');
+                        }
+                    });
+                }
+            });
+
+            $(".btnDestroy").click(function () {
+                destroyID = $(this).data('value');
+            });
+
+            $("#confirmDestroyArticle").click(function () {
+                if (destroyID != '') {
+                    $.ajax({
+                        url: "{{ url('/backyard/articles') }}/" + destroyID + "/destroy",
+                        type: 'post',
+                        data: {_token: TOKEN},
+                        success: function (data) {
+                            $("#alertDestroyDialog").modal('hide');
+                            if (data.response == 'true') {
+                                $("#msgDialogMain").empty().text('彻底删除成功！');
+                                $("#btnCloseDialog").data('action', 'reload');
+                            } else if (data.response == 'false') {
+                                $("#msgDialogMain").empty().text('彻底删除失败！');
+                                $("#btnCloseDialog").data('action', '');
+                            }
+
                             $("#msgDialog").modal('show');
                         }
                     });
@@ -204,8 +221,10 @@
             $("#btnCloseDialog").click(function () {
                 $("#msgDialog").modal('hide');
 
-                switch ($(this).data('action')){
-                    case 'reload':window.location.reload();break;
+                switch ($(this).data('action')) {
+                    case 'reload':
+                        window.location.reload();
+                        break;
                 }
             })
         });

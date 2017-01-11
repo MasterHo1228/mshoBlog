@@ -15,6 +15,16 @@ class ArticlePolicy
         return $user->id === $article->user_id;
     }
 
+    public function delete(User $user, Article $article)
+    {
+        return $user->id === $article->user_id;
+    }
+
+    public function restore(User $user, Article $article)
+    {
+        return $user->id === $article->user_id;
+    }
+
     public function destroy(User $user, Article $article)
     {
         return $user->id === $article->user_id;

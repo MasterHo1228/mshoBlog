@@ -1,6 +1,6 @@
 @extends('backend.layout.default')
 @section('external_css')
-    <link rel="stylesheet" href="backend/skins/square/blue.css">
+    <link rel="stylesheet" href="/backend/skins/square/blue.css">
 @stop
 @section('body_style','hold-transition login-page')
 

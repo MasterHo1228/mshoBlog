@@ -100,17 +100,47 @@ class ArticlesController extends Controller
         return redirect('backyard/articles');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
+        $response = 'false';
+
         $article = Article::findOrFail($id);
-        if (User::findOrFail(Auth::id())->can('destroy', $article)) {
-            return response()->json(['response' => 'true']);
-        } else {
-            return false;
+        if (User::findOrFail(Auth::id())->can('delete', $article)) {
+            $article->delete();
+            if ($article->trashed()) {
+                $response = 'true';
+            }
         }
+        return response()->json(['response' => $response]);
     }
 
-    public function show($id, Request $request)
+    public function restore($id)
+    {
+        $response = 'false';
+
+        $article = Article::withTrashed()->find($id);
+        if (User::findOrFail(Auth::id())->can('restore', $article)) {
+            if ($article->restore()) {
+                $response = 'true';
+            }
+        }
+        return response()->json(['response' => $response]);
+    }
+
+    public function destroy($id)
+    {
+        $response = 'false';
+
+        $article = Article::withTrashed()->find($id);
+        if (User::findOrFail(Auth::id())->can('destroy', $article)) {
+            if ($article->forceDelete()) {
+                $response = 'true';
+            }
+        }
+        return response()->json(['response' => $response]);
+    }
+
+    public function preview($id, Request $request)
     {
         if ($request->isMethod('get')) {
             $article = new Article();
@@ -118,6 +148,14 @@ class ArticlesController extends Controller
             $content = $Parsedown->text($article->getPreviewContentById($id));
 
             return response()->json(['data' => $content]);
+        } else {
+            return false;
         }
+    }
+
+    public function trash()
+    {
+        $articles = User::findOrFail(Auth::id())->articles()->onlyTrashed()->orderBy('deleted_at', 'desc')->get();
+        return view('backend.content.articles.trash', compact('articles'));
     }
 }

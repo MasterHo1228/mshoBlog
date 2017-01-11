@@ -27,6 +27,8 @@
                     </li>
                     <li><a class="ajax_load" href="{{ url('backyard/articles') }}"><i class="fa fa-list-alt"></i>
                             文章管理</a></li>
+                    <li><a class="ajax_load" href="{{ url('backyard/articles/trash') }}"><i class="fa fa-trash-o"></i>
+                            回收站</a></li>
                 </ul>
             </li>
             <li><a class="ajax_load" href="#"><i class="fa fa-tags"></i> <span>种类</span></a></li>
