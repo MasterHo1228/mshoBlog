@@ -27,9 +27,6 @@
                                 <td>{{ $article->created_at }}</td>
                                 <td>{{ $article->deleted_at }}</td>
                                 <td>
-                                    <button class="btn btn-xs btn-default btnPreview" data-value="{{ $article->id }}">
-                                        预览
-                                    </button>
                                     <button class="btn btn-xs btn-success btnRestore" data-value="{{ $article->id }}">
                                         恢复
                                     </button>
@@ -56,26 +53,6 @@
             <!-- /.box -->
         </div>
     </div>
-
-    <div class="modal fade" id="articlePreviewDialog" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">文章预览</h4>
-                </div>
-                <div class="modal-body" id="previewArticleContent">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">关闭</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
 
     <div class="modal modal-danger fade" id="alertDestroyDialog" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -152,21 +129,6 @@
                         sNext: "后一页",
                         sLast: "尾页"
                     }
-                }
-            });
-
-            $(".btnPreview").click(function () {
-                var show_id = $(this).attr('data-value');
-                if (show_id != '') {
-                    $.ajax({
-                        url: "{{ url('/backyard/articles') }}/" + show_id,
-                        type: 'get',
-                        dataType: 'json',
-                        success: function (response) {
-                            $("#previewArticleContent").empty().html(response.data);
-                            $("#articlePreviewDialog").modal('show');
-                        }
-                    })
                 }
             });
 

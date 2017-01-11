@@ -44,7 +44,13 @@ Route::group(['prefix' => 'backyard'],function (){
             Route::post('{article}/restore', 'Backend\ArticlesController@restore');
             Route::post('{article}/destroy', 'Backend\ArticlesController@destroy');
         });
-//        Route::resource('tags', 'Backend\TagsController',['except'=>['destroy']]);
+
+        Route::resource('tags', 'Backend\TagsController', ['only' => ['index', 'store']]);
+        Route::group(['prefix' => 'tags'], function () {
+            Route::delete('{tag}', 'Backend\TagsController@delete');
+            Route::post('{tag}/restore', 'Backend\TagsController@restore');
+            Route::post('{tag}/destroy', 'Backend\TagsController@destroy');
+        });
     });
     Route::group(['middleware' => 'guest'],function() {
         Route::get('login', 'Backend\Auth\LoginController@showLoginForm');
