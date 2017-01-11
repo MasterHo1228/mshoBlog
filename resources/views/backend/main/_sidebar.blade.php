@@ -31,7 +31,8 @@
                             回收站</a></li>
                 </ul>
             </li>
-            <li><a class="ajax_load" href="#"><i class="fa fa-tags"></i> <span>种类</span></a></li>
+            <li><a class="ajax_load" href="{{ url('backyard/tags') }}"><i class="fa fa-tags"></i> <span>标签</span></a>
+            </li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>
