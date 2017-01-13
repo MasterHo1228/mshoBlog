@@ -37,8 +37,8 @@ Route::group(['prefix' => '/'], function () {
 //后台
 Route::group(['prefix' => 'backyard'],function (){
     Route::group(['middleware' => 'auth'],function() {
-        Route::get('/', 'backend\HomeController@index');
-        Route::get('/index', 'backend\HomeController@index');
+        Route::get('/', 'Backend\HomeController@index');
+        Route::get('/index', 'Backend\HomeController@index');
         Route::delete('/logout', 'Backend\Auth\LoginController@logout');
         Route::resource('articles', 'Backend\ArticlesController', ['except' => ['show', 'destroy']]);
 
