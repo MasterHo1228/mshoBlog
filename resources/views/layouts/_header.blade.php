@@ -11,6 +11,17 @@
         </div>
 
         <div class="collapse navbar-collapse" id="navigation">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 标签 <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('tags.show',1) }}">PHP</a></li>
+                        <li><a href="{{ route('tags.show',2) }}">Life</a></li>
+                        <li><a href="{{ route('tags.show',3) }}">Others</a></li>
+                    </ul>
+                </li>
+            </ul>
+
             <form class="navbar-form navbar-left">
                 <div class="input-group">
                     <span class="input-group-addon">
@@ -19,6 +30,31 @@
                     <input type="text" class="form-control" placeholder="搜索">
                 </div>
             </form>
+            <ul class="nav navbar-nav navbar-right">
+                @if (Auth::check())
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                    class="fa fa-user"></i> {{ Auth::user()->name }} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route('users.show',Auth::user()->id) }}">个人主页</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <a id="logout" href="#">
+                                    <form action="{{ route('signout') }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn btn-block btn-danger" type="submit" name="button">登出</button>
+                                    </form>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <li>
+                        <a href="#">登录</a>
+                    </li>
+                @endif
+            </ul>
         </div>
     </div>
 </nav>

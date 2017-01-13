@@ -15,4 +15,10 @@ class Tag extends Model
     {
         return self::select(['id', 'name']);
     }
+
+    public function getCurrentArticles($tagID)
+    {
+        $tag = self::findOrFail($tagID);
+        return $tag->articles()->orderBy('created_at', 'desc');
+    }
 }

@@ -20,12 +20,17 @@ Route::group(['prefix' => '/'], function () {
     Route::resource('articles', 'ArticlesController', ['only' => ['show']]);
 
     //Tags
-    Route::resource('tags', 'TagsController', ['only' => 'index']);
+    Route::resource('tags', 'TagsController', ['only' => 'show']);
+
+    Route::resource('users', 'UsersController', ['only' => ['show']]);
 
     //前台
     Route::group(['middleware' => 'guest'], function () {
         Route::get('signin', 'SessionsController@create')->name('signin');
         Route::post('signin', 'SessionsController@store')->name('signin');
+    });
+    Route::group(['middleware' => 'auth'], function () {
+        Route::delete('signout', 'SessionsController@destroy')->name('signout');
     });
 });
 
@@ -59,8 +64,5 @@ Route::group(['prefix' => 'backyard'],function (){
 
 //Users
 //Route::get('/signup', 'UsersController@create')->name('signup');
-//Route::resource('users', 'UsersController');
 //Activation
 //Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
-
-//Route::delete('signout', 'SessionsController@destroy')->name('signout');

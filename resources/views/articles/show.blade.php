@@ -6,7 +6,7 @@
         <div class="section section-landing">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h1 class="title text-center">{{ $article->title }}</h1>
+                    <h2 class="title text-center">{{ $article->title }}</h2>
                     <h6 class="text-center">
                         <b>
                             作者:{{ $article->user->name }}&nbsp;&nbsp;&nbsp;
@@ -20,6 +20,7 @@
                         </b>
                     </h6>
                     <p class="description">{!! $article_content !!}</p>
+                    <hr>
                     <h6 class="text-center">
                         发布日期:{{ $article->created_at }}
                     </h6>
