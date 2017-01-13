@@ -18,10 +18,9 @@ Route::group(['prefix' => '/'], function () {
 
     //Articles
     Route::resource('articles', 'ArticlesController', ['only' => ['show']]);
-
     //Tags
     Route::resource('tags', 'TagsController', ['only' => 'show']);
-
+    //Users
     Route::resource('users', 'UsersController', ['only' => ['show']]);
 
     //前台
@@ -61,7 +60,7 @@ Route::group(['prefix' => 'backyard'],function (){
     });
 });
 
-
+//预留注册模块
 //Users
 //Route::get('/signup', 'UsersController@create')->name('signup');
 //Activation
