@@ -1,6 +1,7 @@
 @extends('layouts.default')
 @section('title','关于')
 
+@section('bg_image','/images/background/about.jpg')
 @section('content')
     <div class="container">
         <div class="section text-center section-landing">

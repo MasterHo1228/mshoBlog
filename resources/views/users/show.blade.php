@@ -2,6 +2,7 @@
 @section('title', $user->name)
 
 @section('pageType','profile-page')
+@section('bg_image','/images/background/user_profile.jpg')
 @section('content')
     <div class="profile-content">
         <div class="container">
