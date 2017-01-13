@@ -40,7 +40,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">个人资料</a>
+                                <a href="{{ route('users.edit',Auth::id()) }}" class="btn btn-default btn-flat">个人资料</a>
                             </div>
                             <div class="pull-right">
                                 <form action="{{ url('/backyard/logout') }}" method="POST">

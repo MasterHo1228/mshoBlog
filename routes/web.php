@@ -54,6 +54,8 @@ Route::group(['prefix' => 'backyard'],function (){
         Route::group(['prefix' => 'tags'], function () {
             Route::get('{tag}/info', 'Backend\TagsController@info');
         });
+
+        Route::resource('users', 'Backend\UsersController', ['only' => ['edit', 'update']]);
     });
     Route::group(['middleware' => 'guest'],function() {
         Route::get('login', 'Backend\Auth\LoginController@showLoginForm');
