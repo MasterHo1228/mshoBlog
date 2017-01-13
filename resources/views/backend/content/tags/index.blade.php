@@ -9,6 +9,9 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-body">
+                    <button class="btn btn-success btn-block" data-toggle="modal" data-target="#newTagDialog">添加标签
+                    </button>
+                    <br/>
                     <table id="articlesList" class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -25,7 +28,8 @@
                                 <td>{{ $tag->count }}</td>
                                 <td>{{ $tag->created_at }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-xs btn-primary">编辑</a>
+                                    <button class="btn btn-xs btn-primary btnEdit" data-value="{{ $tag->id }}">编辑
+                                    </button>
                                     <button class="btn btn-xs btn-danger btnDelele" data-toggle="modal"
                                             data-target="#alertDeleteDialog" data-value="{{ $tag->id }}">删除
                                     </button>
@@ -41,6 +45,52 @@
         </div>
     </div>
 
+    <div class="modal fade" id="newTagDialog" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">添加标签</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="tagName">标签名称</label>
+                        <input type="text" class="form-control" id="tagName" name="tagName" placeholder="标签名称">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-success pull-right" id="btnAddTag">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <div class="modal fade" id="editTagDialog" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">编辑标签</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="editTagName">标签名称</label>
+                        <input type="text" class="form-control" id="editTagName" name="editTagName" placeholder="标签名称">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-success pull-right" id="btnUpdateTag">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
     <div class="modal modal-default fade" id="alertDeleteDialog" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -48,7 +98,7 @@
                     <h4 class="modal-title">删除标签</h4>
                 </div>
                 <div class="modal-body">
-                    <p>确定要删除标签吗？</p>
+                    <p>确定要删除标签吗？删除标签后将无法恢复标签数据</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">取消</button>
@@ -84,10 +134,11 @@
     <script>
         const TOKEN = "{{ csrf_token() }}";
         var del_id = '';
+        var editID = '';
         $(function () {
             $("#articlesList").DataTable({
-                paging: true,
-                lengthChange: true,
+                paging: false,
+                lengthChange: false,
                 searching: true,
                 ordering: true,
                 order: [[2, "desc"]],
@@ -115,6 +166,103 @@
                         sNext: "后一页",
                         sLast: "尾页"
                     }
+                }
+            });
+
+            $("#btnAddTag").click(function () {
+                var tagName = $("#tagName").val();
+                $("#btnCloseDialog").data('action', '');
+                if (tagName != '') {
+                    $.ajax({
+                        url: "{{ url('/backyard/tags') }}",
+                        type: 'post',
+                        data: {
+                            _token: TOKEN,
+                            name: tagName
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            $("#newTagDialog").modal('hide');
+                            if (data.response == 'true') {
+                                $("#msgDialogMain").empty().text('添加成功！');
+                                $("#tagName").val('');
+                                $("#btnCloseDialog").data('action', 'reload');
+                            } else {
+                                $("#msgDialogMain").empty().text('添加失败！');
+                            }
+                            $("#msgDialog").modal('show');
+                        },
+                        error: function (data) {
+                            console.log(data);
+                            var errors = data.responseJSON;
+                            var errorsHtml = '';
+                            $.each(errors, function (key, value) {
+                                errorsHtml += '<ul>';
+                                errorsHtml += '<li>' + value[0] + '</li>';
+                                errorsHtml += '</ul>';
+                            });
+                            $("#msgDialogMain").empty().html(errorsHtml);
+                            $("#msgDialog").modal('show');
+                        }
+                    })
+                } else {
+                    $("#msgDialogMain").empty().text('请输入标签名称！');
+                }
+            });
+
+            $(".btnEdit").click(function () {
+                editID = $(this).data('value');
+                if (editID != '') {
+                    $.getJSON("{{ url('/backyard/tags') }}" + "/" + editID + "/info", function (data) {
+                        $("#editTagName").empty().val(data.name);
+                    });
+                    $("#editTagDialog").modal('show');
+                } else {
+                    $("#msgDialogMain").empty().text('系统错误！');
+                    $("#msgDialog").modal('show');
+                }
+            });
+
+            $("#btnUpdateTag").click(function () {
+                var tagID = editID;
+                var tagName = $("#editTagName").val();
+                $("#btnCloseDialog").data('action', '');
+                if (tagID != '' && tagName != '') {
+                    $.ajax({
+                        url: "{{ url('/backyard/tags') }}" + "/" + tagID,
+                        type: 'post',
+                        data: {
+                            _method: 'PATCH',
+                            _token: TOKEN,
+                            name: tagName
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            $("#editTagDialog").modal('hide');
+                            if (data.response == 'true') {
+                                $("#msgDialogMain").empty().text('修改成功！');
+                                $("#editTagName").val('');
+                                $("#btnCloseDialog").data('action', 'reload');
+                            } else {
+                                $("#msgDialogMain").empty().text('修改失败！');
+                            }
+                            $("#msgDialog").modal('show');
+                        },
+                        error: function (data) {
+                            console.log(data);
+                            var errors = data.responseJSON;
+                            var errorsHtml = '';
+                            $.each(errors, function (key, value) {
+                                errorsHtml += '<ul>';
+                                errorsHtml += '<li>' + value[0] + '</li>';
+                                errorsHtml += '</ul>';
+                            });
+                            $("#msgDialogMain").empty().html(errorsHtml);
+                            $("#msgDialog").modal('show');
+                        }
+                    })
+                } else {
+                    $("#msgDialogMain").empty().text('请输入标签名称！');
                 }
             });
 

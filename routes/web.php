@@ -45,7 +45,7 @@ Route::group(['prefix' => 'backyard'],function (){
             Route::post('{article}/destroy', 'Backend\ArticlesController@destroy');
         });
 
-        Route::resource('tags', 'Backend\TagsController', ['only' => ['index', 'store', 'delete']]);
+        Route::resource('tags', 'Backend\TagsController', ['only' => ['index', 'store', 'update', 'destroy']]);
         Route::group(['prefix' => 'tags'], function () {
             Route::get('{tag}/info', 'Backend\TagsController@info');
         });
