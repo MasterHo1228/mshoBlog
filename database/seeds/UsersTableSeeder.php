@@ -13,11 +13,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'MasterHo1228',
-            'email' => 'masterho1228@gmail.com',
+            'name' => 'Admin',
+            'email' => 'admin@msho.app',
             'password' => '123456',
             'gender' => 'male',
-            'description' => '一个闷骚到极致的程序猿~~~',
+            'description' => '',
             'is_admin' => true,
             'activated' => true,
         ]);
