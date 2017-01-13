@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use Illuminate\Http\Request;
+use TomLingham\Searchy\Facades\Searchy;
 
 class ArticlesController extends Controller
 {
@@ -23,5 +25,12 @@ class ArticlesController extends Controller
         $article_content = $Parsedown->text($article->content);
 
         return view('articles.show', compact('article', 'article_content'));
+    }
+
+    public function search(Request $request)
+    {
+        $searchKey = $request->key;
+        $results = Searchy::articles(['title', 'content'])->query($searchKey)->get();
+        return view('articles.search', compact('results', 'searchKey'));
     }
 }

@@ -18,6 +18,7 @@ Route::group(['prefix' => '/'], function () {
 
     //Articles
     Route::resource('articles', 'ArticlesController', ['only' => ['show']]);
+    Route::get('search', 'ArticlesController@search')->name('search');
     //Tags
     Route::resource('tags', 'TagsController', ['only' => 'show']);
     //Users

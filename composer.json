@@ -10,6 +10,7 @@
         "caouecs/laravel-lang": "3.0.19",
         "douyasi/laravel-editor-md": "dev-master",
         "erusev/parsedown": "1.6.1",
+      "tom-lingham/searchy": "2.*",
         "laravel/framework": "5.3.*"
     },
     "require-dev": {

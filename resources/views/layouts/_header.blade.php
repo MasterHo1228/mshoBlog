@@ -22,12 +22,12 @@
                 </li>
             </ul>
 
-            <form class="navbar-form navbar-left">
+            <form class="navbar-form navbar-left" method="get" action="{{ route('search') }}">
                 <div class="input-group">
                     <span class="input-group-addon">
 			            <i class="fa fa-search"></i>
 		            </span>
-                    <input type="text" class="form-control" placeholder="搜索">
+                    <input type="text" class="form-control" name="key" placeholder="搜索">
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
