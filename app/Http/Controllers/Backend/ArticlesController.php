@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Auth;
 class ArticlesController extends Controller
 {
     public function create(){
-        return view('backend.content.articles.create');
+        $tags = (new Tag())->tagList();
+
+        return view('backend.content.articles.create', compact('tags'));
     }
 
     public function store(Request $request){
@@ -59,7 +61,9 @@ class ArticlesController extends Controller
         }
         $article->tags = $tags;
 
-        return view('backend.content.articles.edit', compact('article'));
+        $tagsList = (new Tag())->tagList();
+
+        return view('backend.content.articles.edit', compact('article', 'tagsList'));
     }
 
     public function update($id, Request $request)

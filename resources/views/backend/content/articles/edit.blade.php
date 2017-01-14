@@ -31,4 +31,28 @@
 @section('external_scripts')
     {!! editor_js() !!}
     {!! editor_config('mdeditor') !!}
+
+    <script>
+        var tags = [
+                @foreach ($tagsList as $tag)
+            {
+                tag: "{{$tag}}"
+            },
+            @endforeach
+        ];
+
+        $('#articleTags').selectize({
+            delimiter: ',',
+            persist: false,
+            valueField: 'tag',
+            labelField: 'tag',
+            searchField: 'tag',
+            options: tags,
+            create: function (input) {
+                return {
+                    tag: input
+                }
+            }
+        });
+    </script>
 @stop
