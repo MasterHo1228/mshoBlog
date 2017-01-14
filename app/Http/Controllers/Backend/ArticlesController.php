@@ -154,7 +154,7 @@ class ArticlesController extends Controller
     {
         if ($request->isMethod('get')) {
             $article = new Article();
-            $Parsedown = new \Parsedown();
+            $Parsedown = new \ParsedownExtra();
             $content = $Parsedown->text($article->getPreviewContentById($id));
 
             return response()->json(['data' => $content]);

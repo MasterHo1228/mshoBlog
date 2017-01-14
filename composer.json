@@ -10,8 +10,9 @@
         "caouecs/laravel-lang": "3.0.19",
         "douyasi/laravel-editor-md": "dev-master",
         "erusev/parsedown": "1.6.1",
-      "tom-lingham/searchy": "2.*",
-        "laravel/framework": "5.3.*"
+      "erusev/parsedown-extra": "0.7.1",
+      "laravel/framework": "5.3.*",
+      "tom-lingham/searchy": "2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
