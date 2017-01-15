@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies\Backend;
+namespace App\Policies;
 
-use App\Models\Backend\Article;
-use App\Models\Backend\User;
+use App\Models\Article;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ArticlePolicy

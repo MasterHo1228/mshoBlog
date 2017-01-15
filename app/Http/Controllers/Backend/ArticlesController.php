@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Backend\Article;
-use App\Models\Backend\Tag;
-use App\Models\Backend\User;
+use App\Models\Article;
+use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
 {
     public function create(){
-        $tags = (new Tag())->tagList();
+        $tags = Tag::tagsNameList();
 
         return view('backend.content.articles.create', compact('tags'));
     }
@@ -47,7 +47,7 @@ class ArticlesController extends Controller
     public function index()
     {
         $articles = new Article();
-        $articles_list = $articles->getCurrentUserArticles();
+        $articles_list = $articles->getCurrentUserArticles(Auth::id());
 
         return view('backend.content.articles.index', compact('articles_list'));
     }
@@ -61,7 +61,7 @@ class ArticlesController extends Controller
         }
         $article->tags = $tags;
 
-        $tagsList = (new Tag())->tagList();
+        $tagsList = Tag::tagsNameList();
 
         return view('backend.content.articles.edit', compact('article', 'tagsList'));
     }

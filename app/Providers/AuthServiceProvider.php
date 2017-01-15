@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Backend\Article;
-use App\Policies\Backend\ArticlePolicy;
+use App\Models\Article;
+use App\Policies\ArticlePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
