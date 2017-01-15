@@ -24,6 +24,8 @@
                     <h6 class="text-center">
                         发布日期:{{ $article->created_at }}
                     </h6>
+
+                    @include('articles._disqus_comments')
                 </div>
             </div>
         </div>
