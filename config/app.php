@@ -180,7 +180,6 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Douyasi\Editor\EditorServiceProvider::class,
         TomLingham\Searchy\SearchyServiceProvider::class,
-//        Unicodeveloper\Emoji\EmojiServiceProvider::class,
 
     ],
 
@@ -230,7 +229,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Searchy' => TomLingham\Searchy\Facades\Searchy::class,
-//        'Emoji' => Unicodeveloper\Emoji\Facades\Emoji::class,
 
     ],
 

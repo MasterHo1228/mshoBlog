@@ -14,6 +14,7 @@
                         <br/><br/>
                         该博客网站基于Laravel 5.3开发<br/>
                         网站GitHub开源地址:<a href="https://github.com/MasterHo1228/mshoBlog" target="_blank">https://github.com/MasterHo1228/mshoBlog</a><br/>
+                        E-Mail:<a href="mailto:masterho1228@gmail.com">masterho1228@gmail.com</a>
                     </p>
                 </div>
             </div>
