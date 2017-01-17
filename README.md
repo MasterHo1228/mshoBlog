@@ -5,7 +5,7 @@ Demo:http://masterho1228.xyz
 
 ##Notice
 1. 搭配PHP7食用，口味更佳~~
-2. 务必先安装node.js、composer、gulp，具体教程可利用搜索引擎查找。
+2. 务必安装Redis、node.js、composer、gulp，具体教程可利用搜索引擎查找。
 
 ##Installation
 1. Clone源码到服务器环境路径内。
