@@ -37,7 +37,9 @@
                                     class="fa fa-user"></i> {{ Auth::user()->name }} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('users.show',Auth::user()->id) }}">个人主页</a></li>
+                            @if(Auth::user()->is_admin)
                             <li><a href="{{ url('/backyard') }}" target="_blank">博客管理</a></li>
+                            @endif
                             <li class="divider"></li>
                             <li>
                                 <a id="logout" href="#">
