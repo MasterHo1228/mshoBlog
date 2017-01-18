@@ -32,6 +32,8 @@ Route::group(['prefix' => '/'], function () {
     Route::group(['middleware' => 'auth'], function () {
         Route::delete('signout', 'SessionsController@destroy')->name('signout');
     });
+
+    Route::get('feed', 'RssController@index')->name('feed');
 });
 
 //后台

@@ -31,6 +31,9 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ route('feed') }}" target="_blank"><i class="fa fa-rss"></i> RSS</a>
+                </li>
                 @if (Auth::check())
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
