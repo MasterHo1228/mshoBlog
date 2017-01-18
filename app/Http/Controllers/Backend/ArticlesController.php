@@ -153,9 +153,8 @@ class ArticlesController extends Controller
     public function preview($id, Request $request)
     {
         if ($request->isMethod('get')) {
-            $article = new Article();
             $Parsedown = new \ParsedownExtra();
-            $content = $Parsedown->text($article->getPreviewContentById($id));
+            $content = $Parsedown->text(Article::getPreviewContentById($id));
 
             return response()->json(['data' => $content]);
         } else {

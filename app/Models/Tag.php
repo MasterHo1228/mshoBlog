@@ -18,14 +18,14 @@ class Tag extends Model
         return self::all()->pluck('name');
     }
 
-    public function articles()
-    {
-        return $this->belongsToMany(Article::class);
-    }
-
-    public function getCurrentArticles($tagID)
+    public static function getCurrentArticles($tagID)
     {
         $tag = self::find($tagID);
         return $tag->articles()->orderBy('created_at', 'desc');
+    }
+
+    public function articles()
+    {
+        return $this->belongsToMany(Article::class);
     }
 }
