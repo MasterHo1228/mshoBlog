@@ -11,7 +11,7 @@ class UsersController extends Controller
 {
     public function create()
     {
-        return view('users.create');
+        return view('frontend.users.create');
     }
 
     public function store(Request $request)
@@ -65,6 +65,6 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $feed_items = $user->articles()->orderBy('created_at', 'desc')->paginate(30);
-        return view('users.show', compact('user', 'feed_items'));
+        return view('frontend.users.show', compact('user', 'feed_items'));
     }
 }

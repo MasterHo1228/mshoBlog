@@ -16,7 +16,7 @@ class SessionsController extends Controller
 
     public function create()
     {
-        return view('sessions.create');
+        return view('frontend.sessions.create');
     }
 
     public function store(Request $request)

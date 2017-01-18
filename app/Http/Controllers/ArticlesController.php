@@ -24,13 +24,13 @@ class ArticlesController extends Controller
         $Parsedown = new \ParsedownExtra();
         $article_content = $Parsedown->text($article->content);
 
-        return view('articles.show', compact('article', 'article_content'));
+        return view('frontend.articles.show', compact('article', 'article_content'));
     }
 
     public function search(Request $request)
     {
         $searchKey = $request->key;
         $results = Searchy::articles(['title', 'content'])->query($searchKey)->get();
-        return view('articles.search', compact('results', 'searchKey'));
+        return view('frontend.articles.search', compact('results', 'searchKey'));
     }
 }

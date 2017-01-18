@@ -1,7 +1,7 @@
 @if (count($results))
     <ol class="articles">
         @foreach ($results as $result)
-            @include('articles._result_item')
+            @include('frontend.articles._result_item')
         @endforeach
     </ol>
 @else

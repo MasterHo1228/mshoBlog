@@ -2,12 +2,12 @@
      style="background-image: url(@yield('bg_image','/images/background/list_detail.jpg'));">
     @include('shared.message')
     @if(Request::is('/'))
-        @include('static_pages._index_header')
+        @include('frontend.static_pages._index_header')
     @elseif(Request::is('signup'))
-        @include('users._signup')
-        @include('layouts._footer')
+        @include('frontend.users._signup')
+        @include('frontend.layouts._footer')
     @elseif(Request::is('signin'))
-        @include('sessions._signin')
-        @include('layouts._footer')
+        @include('frontend.sessions._signin')
+        @include('frontend.layouts._footer')
     @endif
 </div>

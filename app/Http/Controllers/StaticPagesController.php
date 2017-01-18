@@ -9,10 +9,10 @@ class StaticPagesController extends Controller
     public function home(){
         $feed_items = Article::getLatestArticles();
 
-        return view('static_pages.home', compact('feed_items'));
+        return view('frontend.static_pages.home', compact('feed_items'));
     }
 
     public function about(){
-        return view('static_pages.about');
+        return view('frontend.static_pages.about');
     }
 }

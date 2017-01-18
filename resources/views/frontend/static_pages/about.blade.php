@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('frontend.layouts.default')
 @section('title','关于')
 
 @section('bg_image','/images/background/about.jpg')

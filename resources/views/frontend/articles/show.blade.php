@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('frontend.layouts.default')
 @section('title',$article->title)
 
 @section('content')
@@ -25,7 +25,7 @@
                         发布日期:{{ $article->created_at }}
                     </h6>
 
-                    @include('articles._disqus_comments')
+                    @include('frontend.articles._disqus_comments')
                 </div>
             </div>
         </div>

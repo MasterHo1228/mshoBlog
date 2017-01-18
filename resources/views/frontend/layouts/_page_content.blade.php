@@ -2,5 +2,5 @@
     <div class="main main-raised">
         @yield('content')
     </div>
-    @include('layouts._footer')
+    @include('frontend.layouts._footer')
 @endif

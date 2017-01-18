@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('frontend.layouts.default')
 @section('title',$tag->name)
 
 @section('content')
@@ -8,7 +8,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <h2 class="title"><i class="fa fa-tag"></i>&nbsp;{{ $tag->name }}</h2>
                     <div class="description" style="text-align: left !important;">
-                        @include('articles.feed')
+                        @include('frontend.articles.feed')
                     </div>
                 </div>
             </div>

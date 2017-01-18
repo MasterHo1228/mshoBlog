@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('frontend.layouts.default')
 @section('title','登录')
 
 @section('pageType','signup-page')

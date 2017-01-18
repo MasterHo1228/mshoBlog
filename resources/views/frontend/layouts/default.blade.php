@@ -9,10 +9,10 @@
     <title>@yield('title','木有标题') -- 低调君的黑科技研究室</title>
 </head>
 <body class="@yield('pageType','')">
-@include('layouts._header')
+@include('frontend.layouts._header')
 <div class="wrapper">
-    @include('layouts._page_header')
-    @include('layouts._page_content')
+    @include('frontend.layouts._page_header')
+    @include('frontend.layouts._page_content')
 </div>
 </body>
 <script src="/js/app.js"></script>

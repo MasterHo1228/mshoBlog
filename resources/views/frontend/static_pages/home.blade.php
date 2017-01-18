@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('frontend.layouts.default')
 @section('title', '主页')
 @section('pageType','landing-page')
 @section('bg_image','/images/background/home-header.jpg')
@@ -8,7 +8,7 @@
         <div class="section section-landing">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    @include('articles.feed')
+                    @include('frontend.articles.feed')
                 </div>
             </div>
         </div>
