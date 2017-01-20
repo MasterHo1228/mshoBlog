@@ -180,6 +180,8 @@ return [
         Douyasi\Editor\EditorServiceProvider::class,
         TomLingham\Searchy\SearchyServiceProvider::class,
         Moell\LaravelRss\RssServiceProvider::class,
+        GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
+//        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
@@ -230,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Searchy' => TomLingham\Searchy\Facades\Searchy::class,
         'Rss' => Moell\LaravelRss\RssFacade::class,
+        'HTMLMin' => GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
 
     ],
 
