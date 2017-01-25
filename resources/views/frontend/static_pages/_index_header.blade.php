@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="title">Just do it when you decide to do it.</h1>
+            <h1 class="title">Just do it when you decide to do.</h1>
             <h3>&#64;MasterHo1228</h3>
             <br/>
             <br/>
