@@ -177,6 +177,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laravel\Tinker\TinkerServiceProvider::class,
         Douyasi\Editor\EditorServiceProvider::class,
         TomLingham\Searchy\SearchyServiceProvider::class,
         Moell\LaravelRss\RssServiceProvider::class,
