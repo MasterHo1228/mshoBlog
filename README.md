@@ -4,8 +4,8 @@ A blog website,powered by Laravel~
 Demo:http://masterho1228.xyz
 
 ##Notice
-1. 搭配PHP7食用，口味更佳~~
-2. 务必安装Redis、node.js、composer、gulp，具体教程可利用搜索引擎查找。
+1. 务必安装Redis,node.js,composer，具体教程可利用搜索引擎查找。
+2. 搭配PHP7食用，口味更佳~~
 
 ##Installation
 1. Clone源码到服务器环境路径内。
@@ -27,3 +27,8 @@ gulp
     
     (nginx)可参考该贴子的配置：https://laravel-china.org/topics/492 
 8. enjoy~
+
+###P.S
+默认管理员账户名:admin@msho.app
+
+密码:123456
