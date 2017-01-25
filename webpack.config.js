@@ -50,6 +50,7 @@ if (Mix.js.vendor) {
 }
 
 
+
 /*
  |--------------------------------------------------------------------------
  | Webpack Output
@@ -62,6 +63,7 @@ if (Mix.js.vendor) {
  */
 
 module.exports.output = Mix.output();
+
 
 
 /*
@@ -120,28 +122,28 @@ module.exports.module = {
 
 
 if (Mix.cssPreprocessor) {
-    Mix[Mix.cssPreprocessor].forEach(toCompile = > {
+    Mix[Mix.cssPreprocessor].forEach(toCompile => {
         let extractPlugin = new plugins.ExtractTextPlugin(
             Mix.cssOutput(toCompile)
         );
 
-    module.exports.module.rules.push({
-        test: new RegExp(toCompile.src.file),
-        loader: extractPlugin.extract({
-            fallbackLoader: 'style-loader',
-            loader: [
-                'css-loader',
-                'postcss-loader',
-                'resolve-url-loader',
-                (Mix.cssPreprocessor == 'sass') ? 'sass-loader?sourceMap' : 'less-loader'
-            ]
-        })
-    });
+        module.exports.module.rules.push({
+            test: new RegExp(toCompile.src.file),
+            loader: extractPlugin.extract({
+                fallbackLoader: 'style-loader',
+                loader: [
+                    'css-loader',
+                    'postcss-loader',
+                    'resolve-url-loader',
+                    (Mix.cssPreprocessor == 'sass') ? 'sass-loader?sourceMap' : 'less-loader'
+                ]
+            })
+        });
 
-    module.exports.plugins = (module.exports.plugins || []).concat(extractPlugin);
-})
-    ;
+        module.exports.plugins = (module.exports.plugins || []).concat(extractPlugin);
+    });
 }
+
 
 
 /*
@@ -164,6 +166,7 @@ module.exports.resolve = {
 };
 
 
+
 /*
  |--------------------------------------------------------------------------
  | Stats
@@ -183,7 +186,8 @@ module.exports.stats = {
     errors: false
 };
 
-module.exports.performance = {hints: false};
+module.exports.performance = { hints: false };
+
 
 
 /*
@@ -198,6 +202,7 @@ module.exports.performance = {hints: false};
  */
 
 module.exports.devtool = Mix.sourcemaps;
+
 
 
 /*
@@ -217,6 +222,7 @@ module.exports.devServer = {
 };
 
 
+
 /*
  |--------------------------------------------------------------------------
  | Plugins
@@ -230,11 +236,11 @@ module.exports.devServer = {
 
 module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.ProvidePlugin(Mix.js.autoload || {
-            jQuery: 'jquery',
-            $: 'jquery',
-            jquery: 'jquery',
-            'window.jQuery': 'jquery'
-        }),
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery',
+        'window.jQuery': 'jquery'
+    }),
 
     new plugins.FriendlyErrorsWebpackPlugin(),
 
@@ -252,10 +258,11 @@ module.exports.plugins = (module.exports.plugins || []).concat([
                 require('autoprefixer')
             ],
             context: __dirname,
-            output: {path: './'}
+            output: { path: './' }
         }
     })
 ]);
+
 
 
 if (Mix.notifications) {
@@ -273,31 +280,28 @@ if (Mix.versioning) {
     Mix.versioning.record();
 
     module.exports.plugins.push(
-        new plugins.WebpackOnBuildPlugin(() = > {
+        new plugins.WebpackOnBuildPlugin(() => {
             Mix.versioning.prune(Mix.publicPath);
-})
-)
-    ;
+        })
+    );
 }
 
 
 if (Mix.combine || Mix.minify) {
     module.exports.plugins.push(
-        new plugins.WebpackOnBuildPlugin(() = > {
+        new plugins.WebpackOnBuildPlugin(() => {
             Mix.concatenateAll().minifyAll();
-})
-)
-    ;
+        })
+    );
 }
 
 
 if (Mix.copy) {
-    Mix.copy.forEach(copy = > {
+    Mix.copy.forEach(copy => {
         module.exports.plugins.push(
-        new plugins.CopyWebpackPlugin([copy])
-    );
-})
-    ;
+            new plugins.CopyWebpackPlugin([copy])
+        );
+    });
 }
 
 
