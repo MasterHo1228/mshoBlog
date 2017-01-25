@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
             <div class="card card-signup">
-                <form class="form" method="post" action="{{ route('signin') }}">
+                <form class="form" method="post" action="{{ route('frontend.signin') }}">
                     {{ csrf_field() }}
                     <div class="header header-primary text-center">
                         <h4>登录</h4>

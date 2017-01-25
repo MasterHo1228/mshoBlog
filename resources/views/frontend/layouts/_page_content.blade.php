@@ -2,5 +2,4 @@
     <div class="main main-raised">
         @yield('content')
     </div>
-    @include('frontend.layouts._footer')
 @endif

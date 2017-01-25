@@ -3,19 +3,13 @@
         <nav class="pull-left">
             <ul>
                 <li>
-                    <a href="#">
-                        mshoBlog
-                    </a>
+                    <a href="#">mshoBlog</a>
                 </li>
                 <li>
-                    <a href="{{ route('about') }}">
-                        关于
-                    </a>
+                    <a href="{{ route('frontend.about') }}">关于</a>
                 </li>
                 <li>
-                    <!--<a href="http://www.miitbeian.gov.cn/" target="_blank" id="cnLicenseID">
-                        粤ICP备XXXXXXXX号
-                    </a>-->
+                    @include('frontend.layouts._cn_license_id')
                 </li>
             </ul>
         </nav>

@@ -14,6 +14,7 @@
     @include('frontend.layouts._page_header')
     @include('frontend.layouts._page_content')
 </div>
+@include('frontend.layouts._footer')
 </body>
 <script src="/js/app.js"></script>
 <script src="/js/material-kit.js"></script>
