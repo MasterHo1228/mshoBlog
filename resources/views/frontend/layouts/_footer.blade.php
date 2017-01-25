@@ -9,6 +9,10 @@
                     <a href="{{ route('frontend.about') }}">关于</a>
                 </li>
                 <li>
+                    <a href="https://m.do.co/c/05160c4ca109" target="_blank"><img src="/images/DigitalOcean.png"
+                                                                                  width="120" height="25"></a>
+                </li>
+                <li>
                     @include('frontend.layouts._cn_license_id')
                 </li>
             </ul>
