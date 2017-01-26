@@ -182,7 +182,6 @@ return [
         TomLingham\Searchy\SearchyServiceProvider::class,
         Moell\LaravelRss\RssServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
-//        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
