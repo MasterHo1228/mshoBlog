@@ -58,7 +58,7 @@ class UsersController extends Controller
 
         Auth::login($user);
         session()->flash('success', '恭喜你，激活成功！');
-        return redirect()->route('home');
+        return redirect()->route('frontend.home');
     }
 
     public function show($id)
