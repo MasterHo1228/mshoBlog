@@ -182,6 +182,7 @@ return [
         TomLingham\Searchy\SearchyServiceProvider::class,
         Moell\LaravelRss\RssServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
+        MercurySeries\Flashy\FlashyServiceProvider::class,
 
     ],
 
@@ -233,6 +234,7 @@ return [
         'Searchy' => TomLingham\Searchy\Facades\Searchy::class,
         'Rss' => Moell\LaravelRss\RssFacade::class,
         'HTMLMin' => GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
 
     ],
 

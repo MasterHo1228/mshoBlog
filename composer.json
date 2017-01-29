@@ -15,6 +15,7 @@
         "graham-campbell/htmlmin": "^4.5",
       "laravel/framework": "5.4.*",
       "laravel/tinker": "^1.0",
+      "mercuryseries/flashy": "^1.0",
         "moell/laravel-rss": "1.*",
         "predis/predis": "v1.1.1",
         "tom-lingham/searchy": "2.*"

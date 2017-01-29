@@ -18,5 +18,6 @@
 </body>
 <script src="/js/app.js"></script>
 <script src="/js/material-kit.js"></script>
+@include('flashy::message')
 @include('frontend.layouts._google_analytics_tracking')
 </html>
