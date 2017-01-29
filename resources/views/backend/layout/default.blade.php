@@ -15,10 +15,12 @@
 </body>
 <script src="/backend/js/all.min.js"></script>
 @include('flashy::message')
+@yield('external_scripts')
 <script>
-    $(".ajax_load").click(function () {
-        Pace.restart();
+    $(function () {
+        $(".ajax_load").click(function () {
+            Pace.restart();
+        })
     })
 </script>
-@yield('external_scripts')
 </html>
