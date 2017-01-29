@@ -28,7 +28,7 @@ class UsersController extends Controller
         $user->description = $request->description;
         $user->save();
 
-        session()->flash('success', '用户信息更新成功！');
+        Flashy::success('用户信息更新成功！');
         return redirect('/backyard/index');
     }
 }

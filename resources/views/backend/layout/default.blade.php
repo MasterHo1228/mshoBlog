@@ -14,6 +14,7 @@
     @yield('content')
 </body>
 <script src="/backend/js/all.min.js"></script>
+@include('flashy::message')
 <script>
     $(".ajax_load").click(function () {
         Pace.restart();

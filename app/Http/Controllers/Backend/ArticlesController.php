@@ -40,7 +40,7 @@ class ArticlesController extends Controller
             $article->tags()->save($tag);
         }
 
-        session()->flash('success', '文章发布成功！');
+        Flashy::success('文章发布成功！');
         return redirect('/backyard/articles');
     }
 
@@ -100,7 +100,7 @@ class ArticlesController extends Controller
             $article->tags()->save($tag);
         }
 
-        session()->flash('success', '文章更新成功！');
+        Flashy::success('文章更新成功！');
         return redirect('backyard/articles');
     }
 
