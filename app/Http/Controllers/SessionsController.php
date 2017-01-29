@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MercurySeries\Flashy\Flashy;
 
 class SessionsController extends Controller
 {
@@ -33,18 +34,15 @@ class SessionsController extends Controller
 
         if (Auth::attempt($credentials, $request->has('remember'))) {
             if (Auth::user()->activated) {
-//                session()->flash('success', 'Welcome back!');
-                flashy()->success('Welcome back!');
+                Flashy::success('Welcome back!');
                 return redirect()->intended(route('frontend.users.profile', [Auth::user()]));
             } else {
                 Auth::logout();
-//                session()->flash('warning', '你的账号未激活，请检查邮箱中的注册邮件进行激活。');
-                flashy()->warning('你的账号未激活，请检查邮箱中的注册邮件进行激活。');
+                Flashy::warning('你的账号未激活，请检查邮箱中的注册邮件进行激活。');
                 return redirect('signin');
             }
         } else {
-//            session()->flash('danger', 'E-Mail或密码错误，登录失败！');
-            flashy()->danger('E-Mail或密码错误，登录失败！');
+            Flashy::danger('E-Mail或密码错误，登录失败！');
             return redirect()->back();
         }
     }
@@ -52,8 +50,7 @@ class SessionsController extends Controller
     public function destroy()
     {
         Auth::logout();
-//        session()->flash('warning', '登出成功！欢迎下次再来呦~~');
-        flashy()->warning('登出成功！欢迎下次再来呦~~');
+        Flashy::warning('登出成功！欢迎下次再来呦~~');
         return redirect('/');
     }
 }
