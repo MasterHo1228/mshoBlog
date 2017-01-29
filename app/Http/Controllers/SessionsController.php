@@ -42,7 +42,7 @@ class SessionsController extends Controller
                 return redirect('signin');
             }
         } else {
-            Flashy::danger('E-Mail或密码错误，登录失败！');
+            Flashy::error('E-Mail或密码错误，登录失败！');
             return redirect()->back();
         }
     }

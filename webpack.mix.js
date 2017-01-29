@@ -32,7 +32,7 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css');
 
-//AdminLTE
+//backend
 mix.combine([
     'node_modules/bootstrap/dist/css/bootstrap.min.css',
     'node_modules/font-awesome/css/font-awesome.min.css',
@@ -40,17 +40,10 @@ mix.combine([
     'node_modules/selectize/dist/css/selectize.bootstrap3.css',
     'node_modules/admin-lte/dist/css/AdminLTE.min.css',
     'node_modules/admin-lte/dist/css/skins/skin-blue.min.css'
-], 'public/backend/css/all.min.css');
-mix.js([
-    'node_modules/jquery/dist/jquery.min.js',
-    'node_modules/bootstrap/dist/js/bootstrap.min.js',
-    'node_modules/datatables.net/js/jquery.dataTables.js',
-    'node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
-    'node_modules/icheck/icheck.min.js',
-    'node_modules/selectize/dist/js/standalone/selectize.min.js',
-    'node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js',
-    'node_modules/admin-lte/dist/js/app.min.js'
-], 'public/backend/js/all.min.js');
+], 'public/backend/css/all.css');
+
+mix.js('resources/assets/backend/js/all.js', 'public/backend/js/all.js');
+
 mix.copy(
     'node_modules/icheck/skins', 'public/backend/skins'
 );

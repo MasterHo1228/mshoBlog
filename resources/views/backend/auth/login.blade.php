@@ -1,6 +1,6 @@
 @extends('backend.layout.default')
 @section('external_css')
-    <link rel="stylesheet" href="/backend/skins/square/blue.css">
+    <link rel="stylesheet" href="/backend/skins/blue.css">
 @stop
 @section('body_style','hold-transition login-page')
 
@@ -19,7 +19,7 @@
                 {{ csrf_field() }}
                 <div class="form-group has-feedback">
                     <input type="email" name="email" class="form-control" placeholder="Email"
-                           value="{{ old('email') }}">
+                           value="{{ old('email') }}" autofocus>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
