@@ -50,12 +50,16 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
+          "php artisan config:clear",
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
+          "php artisan optimize",
+          "php artisan config:cache"
         ],
         "post-update-cmd": [
+          "php artisan config:clear",
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+          "php artisan optimize",
+          "php artisan config:cache"
         ]
     },
     "config": {
