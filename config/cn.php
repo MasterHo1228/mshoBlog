@@ -8,7 +8,7 @@
 
 return [
 
-    'icp_id' => env('CN_ICP_ID'),
+    'icp_id' => env('CN_ICP_ID',''),
 
     'icp_display' => env('CN_ICP_DISPLAY',false),
 ];
