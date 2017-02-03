@@ -9,9 +9,7 @@
                     <a href="{{ route('frontend.about') }}">关于</a>
                 </li>
                 <li>
-                    @component('frontend.layouts._cn_icp',['isDisplay'=>Config::get('cn.icp_display')])
-                    {{ Config::get('cn.icp_id') }}
-                    @endcomponent
+                    @include('frontend.layouts._cn_icp')
                 </li>
                 <li>
                     <a href="https://m.do.co/c/05160c4ca109" target="_blank"><img src="/images/DigitalOcean.png"
