@@ -18,7 +18,6 @@
         "mercuryseries/flashy": "^1.0",
         "moell/laravel-rss": "1.*",
         "predis/predis": "v1.1.1",
-        "roumen/sitemap": "^2.6",
         "spatie/laravel-backup": "^4.4",
         "spatie/laravel-paginateroute": "^2.4",
         "tom-lingham/searchy": "2.*"
