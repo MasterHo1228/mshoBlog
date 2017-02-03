@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['prefix' => '/'], function () {
+Route::prefix('/')->group(function () {
     //Static pages
     Route::name('frontend.home')->get('/', 'StaticPagesController@home');
     Route::paginate('/', 'StaticPagesController@home');#Optimized paginate route
@@ -45,41 +45,37 @@ Route::group(['prefix' => '/'], function () {
     Route::paginate('users/{user}', 'UsersController@show');#Optimized paginate route
 
     //前台
-    Route::group(['middleware' => 'guest'], function () {
-        Route::name('frontend.signin')->get('signin', 'SessionsController@create');
-        Route::name('frontend.signin')->post('signin', 'SessionsController@store');
+    Route::middleware('guest')->group(function () {
+        Route::name('frontend.signin')->middleware('guest')->get('signin', 'SessionsController@create');
+        Route::name('frontend.signin')->middleware('guest')->post('signin', 'SessionsController@store');
     });
-    Route::group(['middleware' => 'auth'], function () {
-        Route::name('frontend.signout')->delete('signout', 'SessionsController@destroy');
-    });
+    Route::name('frontend.signout')->middleware('auth')->delete('signout', 'SessionsController@destroy');
 });
 
 //后台
-Route::group(['prefix' => 'backyard'],function (){
-    Route::group(['middleware' => 'auth'],function() {
-        Route::name('backend.index')->get('/', 'Backend\HomeController@index');
-        Route::name('backend.logout')->delete('/logout', 'Backend\Auth\LoginController@logout');
-        Route::resource('articles', 'Backend\ArticlesController', ['except' => ['show', 'destroy']]);
+Route::prefix('backyard')->middleware('auth')->group(function () {
+    Route::name('backend.index')->get('/', 'Backend\HomeController@index');
+    Route::name('backend.logout')->delete('/logout', 'Backend\Auth\LoginController@logout');
+    Route::resource('articles', 'Backend\ArticlesController', ['except' => ['show', 'destroy']]);
 
-        Route::group(['prefix' => 'articles'], function () {
-            Route::get('{article}/preview', 'Backend\ArticlesController@preview');
-            Route::delete('{article}', 'Backend\ArticlesController@delete');
-            Route::get('trash', 'Backend\ArticlesController@trash');
-            Route::post('{article}/restore', 'Backend\ArticlesController@restore');
-            Route::post('{article}/destroy', 'Backend\ArticlesController@destroy');
-        });
-
-        Route::resource('tags', 'Backend\TagsController', ['only' => ['index', 'store', 'update', 'destroy']]);
-        Route::group(['prefix' => 'tags'], function () {
-            Route::get('{tag}/info', 'Backend\TagsController@info');
-        });
-
-        Route::resource('users', 'Backend\UsersController', ['only' => ['edit', 'update']]);
+    Route::prefix('articles')->group(function () {
+        Route::get('{article}/preview', 'Backend\ArticlesController@preview');
+        Route::delete('{article}', 'Backend\ArticlesController@delete');
+        Route::get('trash', 'Backend\ArticlesController@trash');
+        Route::post('{article}/restore', 'Backend\ArticlesController@restore');
+        Route::post('{article}/destroy', 'Backend\ArticlesController@destroy');
     });
-    Route::group(['middleware' => 'guest'],function() {
-        Route::name('backend.login')->get('login', 'Backend\Auth\LoginController@showLoginForm');
-        Route::name('backend.login')->post('login', 'Backend\Auth\LoginController@login');
+
+    Route::resource('tags', 'Backend\TagsController', ['only' => ['index', 'store', 'update', 'destroy']]);
+    Route::prefix('tags')->group(function () {
+        Route::get('{tag}/info', 'Backend\TagsController@info');
     });
+
+    Route::resource('users', 'Backend\UsersController', ['only' => ['edit', 'update']]);
+});
+Route::prefix('backyard')->middleware('guest')->group(function () {
+    Route::name('backend.login')->get('login', 'Backend\Auth\LoginController@showLoginForm');
+    Route::name('backend.login')->post('login', 'Backend\Auth\LoginController@login');
 });
 
 //RSS Feed
