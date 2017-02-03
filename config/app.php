@@ -183,6 +183,7 @@ return [
         Moell\LaravelRss\RssServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
     ],
 
