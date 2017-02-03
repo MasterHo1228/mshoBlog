@@ -14,6 +14,8 @@
 Route::group(['prefix' => '/'], function () {
     //Static pages
     Route::get('/', 'StaticPagesController@home')->name('frontend.home');
+    Route::paginate('/', 'StaticPagesController@home');#Optimized paginate route
+
     Route::get('/about', 'StaticPagesController@about')->name('frontend.about');
 
     //Articles
@@ -31,6 +33,8 @@ Route::group(['prefix' => '/'], function () {
             'show' => 'frontend.tags.articles',
         ],
     ]);
+    Route::paginate('tags/{user}', 'TagsController@show');#Optimized paginate route
+
     //Users
     Route::resource('users', 'UsersController', [
         'only' => 'show',
@@ -38,6 +42,7 @@ Route::group(['prefix' => '/'], function () {
             'show' => 'frontend.users.profile',
         ],
     ]);
+    Route::paginate('users/{user}', 'UsersController@show');#Optimized paginate route
 
     //前台
     Route::group(['middleware' => 'guest'], function () {

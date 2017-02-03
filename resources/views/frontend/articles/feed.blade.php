@@ -4,7 +4,7 @@
             @include('frontend.articles._article_simple')
         @endforeach
     </ol>
-    {!! $feed_items->render() !!}
+    {!! PaginateRoute::renderPageList($feed_items) !!}
 @else
     <h5 class="description">暂无文章</h5>
 @endif

@@ -184,6 +184,7 @@ return [
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        Spatie\PaginateRoute\PaginateRouteServiceProvider::class,
 
     ],
 
@@ -236,6 +237,7 @@ return [
         'Rss' => Moell\LaravelRss\RssFacade::class,
         'HTMLMin' => GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
+        'PaginateRoute' => Spatie\PaginateRoute\PaginateRouteFacade::class,
 
     ],
 

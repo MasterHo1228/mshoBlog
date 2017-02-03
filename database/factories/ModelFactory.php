@@ -36,6 +36,7 @@ $factory->define(App\Models\Article::class, function (Faker\Generator $faker) {
         'title' => $faker->title,
         'content' => $faker->text(),
         'read_count' => $faker->numberBetween(0, 1024),
+        'user_id' => 1,
         'created_at' => $date_time,
         'updated_at' => $date_time,
     ];
