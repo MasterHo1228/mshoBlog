@@ -13,10 +13,10 @@
 
 Route::group(['prefix' => '/'], function () {
     //Static pages
-    Route::get('/', 'StaticPagesController@home')->name('frontend.home');
+    Route::name('frontend.home')->get('/', 'StaticPagesController@home');
     Route::paginate('/', 'StaticPagesController@home');#Optimized paginate route
 
-    Route::get('/about', 'StaticPagesController@about')->name('frontend.about');
+    Route::name('frontend.about')->get('/about', 'StaticPagesController@about');
 
     //Articles
     Route::resource('articles', 'ArticlesController', [
@@ -25,7 +25,7 @@ Route::group(['prefix' => '/'], function () {
             'show' => 'frontend.articles.show',
         ],
     ]);
-    Route::get('search', 'ArticlesController@search')->name('frontend.search');
+    Route::name('frontend.search')->get('search', 'ArticlesController@search');
     //Tags
     Route::resource('tags', 'TagsController', [
         'only' => 'show',
@@ -46,19 +46,19 @@ Route::group(['prefix' => '/'], function () {
 
     //前台
     Route::group(['middleware' => 'guest'], function () {
-        Route::get('signin', 'SessionsController@create')->name('frontend.signin');
-        Route::post('signin', 'SessionsController@store')->name('frontend.signin');
+        Route::name('frontend.signin')->get('signin', 'SessionsController@create');
+        Route::name('frontend.signin')->post('signin', 'SessionsController@store');
     });
     Route::group(['middleware' => 'auth'], function () {
-        Route::delete('signout', 'SessionsController@destroy')->name('frontend.signout');
+        Route::name('frontend.signout')->delete('signout', 'SessionsController@destroy');
     });
 });
 
 //后台
 Route::group(['prefix' => 'backyard'],function (){
     Route::group(['middleware' => 'auth'],function() {
-        Route::get('/', 'Backend\HomeController@index')->name('backend.index');
-        Route::delete('/logout', 'Backend\Auth\LoginController@logout')->name('backend.logout');
+        Route::name('backend.index')->get('/', 'Backend\HomeController@index');
+        Route::name('backend.logout')->delete('/logout', 'Backend\Auth\LoginController@logout');
         Route::resource('articles', 'Backend\ArticlesController', ['except' => ['show', 'destroy']]);
 
         Route::group(['prefix' => 'articles'], function () {
@@ -77,13 +77,13 @@ Route::group(['prefix' => 'backyard'],function (){
         Route::resource('users', 'Backend\UsersController', ['only' => ['edit', 'update']]);
     });
     Route::group(['middleware' => 'guest'],function() {
-        Route::get('login', 'Backend\Auth\LoginController@showLoginForm')->name('backend.login');
-        Route::post('login', 'Backend\Auth\LoginController@login')->name('backend.login');
+        Route::name('backend.login')->get('login', 'Backend\Auth\LoginController@showLoginForm');
+        Route::name('backend.login')->post('login', 'Backend\Auth\LoginController@login');
     });
 });
 
 //RSS Feed
-Route::get('feed', 'RssController@index')->name('feed');
+Route::name('feed')->get('feed', 'RssController@index');
 
 //预留注册模块
 //Users
