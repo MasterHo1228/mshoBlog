@@ -32,7 +32,7 @@ npm run dev
 2. 默认管理员账户名:`admin@msho.app` 密码:`123456`
 3. 页脚若需要显示网站备案号，则在`.env`文件中进行如下修改：
 ```
-/.env
+.env
 CN_ICP_ID= #Your website ICP ID
 CN_ICP_DISPLAY=true #把false改为true
 ```
@@ -44,6 +44,7 @@ php artisan config:cache
 最后刷新下网页，即可生效。
 
 >已知该功能在Windows系统环境下不能正常使用，本人建议在Windows系统下安装Linux虚拟机部署使用。若确实需要在Windows实体环境下部署使用，则在项目中的`config/cn.php`文件中做如下配置即可。**（但请注意备份此文件的配置数据，未来升级时可能会造成配置数据丢失）**:
+
 ```
 config/cn.php
 
