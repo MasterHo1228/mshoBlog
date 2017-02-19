@@ -61,9 +61,8 @@ class UsersController extends Controller
         return redirect()->route('frontend.home');
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::findOrFail($id);
         $feed_items = $user->articles()->orderBy('created_at', 'desc')->paginate(30);
         return view('frontend.users.show', compact('user', 'feed_items'));
     }

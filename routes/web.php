@@ -33,7 +33,7 @@ Route::prefix('/')->group(function () {
             'show' => 'frontend.tags.articles',
         ],
     ]);
-    Route::paginate('tags/{user}', 'TagsController@show');#Optimized paginate route
+    Route::paginate('tags/{id}', 'TagsController@show');#Optimized paginate route
 
     //Users
     Route::resource('users', 'UsersController', [

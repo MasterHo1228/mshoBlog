@@ -6,9 +6,8 @@ use App\Models\Tag;
 
 class TagsController extends Controller
 {
-    public function show($id)
+    public function show(Tag $tag)
     {
-        $tag = Tag::findOrFail($id);
         $feed_items = $tag->articles()->orderBy('created_at', 'desc')->paginate(15);
         return view('frontend.tags.show', compact('tag', 'feed_items'));
     }
